@@ -1,0 +1,13 @@
+CREATE TABLE File(
+name TEXT NOT NULL PRIMARY KEY,
+path TEXT NOT NULL
+);
+
+insert:
+INSERT OR REPLACE INTO File(name,path)VALUES(?,?);
+
+selectAll:
+SELECT * FROM File;
+
+deleteAll:
+DELETE FROM File;

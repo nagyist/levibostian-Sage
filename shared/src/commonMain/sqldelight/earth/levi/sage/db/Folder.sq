@@ -1,0 +1,13 @@
+CREATE TABLE Folder(
+name TEXT NOT NULL PRIMARY KEY,
+path TEXT NOT NULL
+);
+
+insert:
+INSERT OR REPLACE INTO Folder(name,path)VALUES(?,?);
+
+selectAll:
+SELECT * FROM Folder;
+
+deleteAll:
+DELETE FROM Folder;

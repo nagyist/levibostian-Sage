@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="earth.levi.sage" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="earth.levi.sage">
+    <application>
+        <!-- https://github.com/dropbox/dropbox-sdk-java/tree/master/examples/DropboxAndroid#creating-your-own-android-app-with-the-dropbox-java-sdk -->
+        <activity
+            android:name="com.dropbox.core.android.AuthActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <!-- Using a Manifest Placeholder to hide our app key -->
+                <data android:scheme="db-${dropboxKey}" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+    <!-- https://github.com/dropbox/dropbox-sdk-java/#android-11-updates -->
+    <queries>
+        <package android:name="com.dropbox.android" />
+    </queries>
+</manifest>

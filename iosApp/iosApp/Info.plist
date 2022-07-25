@@ -44,5 +44,27 @@
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
+    
+    <!-- Dropbox sdk uses this to query for dropbox app installed
+    https://github.com/dropbox/dropbox-sdk-obj-c#application-plist-file -->
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>dbapi-8-emm</string>
+        <string>dbapi-2</string>
+    </array>
+    <!-- end dropbox sdk query for app -->
+    <!-- dropbox sdk requires this for redirection from app -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>db-5tcliadh6ivs906</string>
+            </array>
+            <key>CFBundleURLName</key>
+            <string></string>
+        </dict>
+    </array>
+    <!-- end dropbox sdk redirection from app -->
 </dict>
 </plist>
