@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="earth.levi.sage">
+
+    <!-- required permission to view images *that other apps have created* -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- requested for older versions of Android before scoped storage feature was added in Android 10 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
     <application>
         <!-- https://github.com/dropbox/dropbox-sdk-java/tree/master/examples/DropboxAndroid#creating-your-own-android-app-with-the-dropbox-java-sdk -->
         <activity

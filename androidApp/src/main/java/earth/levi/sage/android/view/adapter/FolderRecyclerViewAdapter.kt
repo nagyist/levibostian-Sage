@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import earth.levi.sage.android.databinding.AdapterFolderRecyclerviewBinding
 import earth.levi.sage.db.Folder
+import earth.levi.sage.type.*
 
 class FolderRecyclerViewAdapter : ListAdapter<Folder, FolderRecyclerViewAdapter.ViewHolder>(DiffCallback) {
 

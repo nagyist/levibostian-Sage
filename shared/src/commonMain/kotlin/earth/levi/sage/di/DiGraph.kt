@@ -6,6 +6,7 @@ import earth.levi.sage.repository.FilesRepository
 import earth.levi.sage.repository.FilesRepositoryImpl
 import earth.levi.sage.service.HostingService
 import earth.levi.sage.store.KeyValueStore
+import earth.levi.sage.store.LocalPhotosStore
 import earth.levi.sage.util.Logger
 
 object DiGraph
@@ -13,6 +14,8 @@ object DiGraph
 expect val DiGraph.keyValueStore: KeyValueStore
 
 expect val DiGraph.hostingService: HostingService
+
+expect val DiGraph.localPhotoStore: LocalPhotosStore
 
 expect val DiGraph.logger: Logger
 

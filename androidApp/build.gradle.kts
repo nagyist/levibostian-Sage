@@ -2,7 +2,6 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-android")
-    // kotlin("kapt")
 }
 
 android {
@@ -32,6 +31,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
+
+    implementation("com.squareup.picasso:picasso:2.8")
 
     val lifecycle_version = "2.6.0-alpha01"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")

@@ -8,6 +8,8 @@ import earth.levi.sage.service.DropboxHostingService
 import earth.levi.sage.service.HostingService
 import earth.levi.sage.service.iOSHostingService
 import earth.levi.sage.store.KeyValueStore
+import earth.levi.sage.store.LocalPhotosStore
+import earth.levi.sage.store.LocalPhotosStoreImp
 import earth.levi.sage.util.Logger
 import earth.levi.sage.util.LoggerImpl
 import platform.Foundation.NSUserDefaults
@@ -26,3 +28,6 @@ actual val DiGraph.hostingService: HostingService
 
 val DiGraph.iosHostingService: iOSHostingService
     get() = DropboxHostingService(logger)
+
+val DiGraph.localPhotoStore: LocalPhotosStore
+    get() = LocalPhotosStoreImp()

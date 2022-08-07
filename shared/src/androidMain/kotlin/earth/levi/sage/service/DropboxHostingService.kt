@@ -21,6 +21,8 @@ import earth.levi.sage.type.FolderContents
 import earth.levi.sage.kotlin_inline.Result
 import earth.levi.sage.type.error.HostingServiceGenericFetchError
 import earth.levi.sage.kotlin_inline.fold
+import earth.levi.sage.kotlin_inline.getOrThrow
+import earth.levi.sage.kotlin_inline.onFailure
 import earth.levi.sage.type.result.GetFolderContentsResult
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -111,51 +113,47 @@ class DropboxHostingService(
             return Result.failure(HostingServiceGenericFetchError())
         }
 
-        response.fold(
-            onSuccess = {
-                var hasMore = it.hasMore
-                var cursor = it.cursor
+        response.exceptionOrNull()?.let {
+            return Result.success(GetFolderContentsResult.Success(
+                accumulativeFolderContents,
+                fullSyncCompleted = false
+            ))
+        }
 
-                accumulativeFolderContents = accumulativeFolderContents.addFolderContents(getContentsFromResponse(it.entries))
+        val data = response.getOrThrow()
+        var hasMore = data.hasMore
+        var cursor = data.cursor
 
-                while (hasMore) {
-                    response = try {
-                        Result.success(client.files().listFolderContinue(cursor))
-                    } catch (e: InvalidAccessTokenException) {
-                        return Result.success(GetFolderContentsResult.Unauthorized)
-                    } catch (exception: DbxException) {
-                        logger.error(exception)
-                        return Result.failure(HostingServiceGenericFetchError())
-                    }
+        accumulativeFolderContents = accumulativeFolderContents.addFolderContents(getContentsFromResponse(data.entries))
 
-                    response.fold(
-                        onSuccess = {
-                            hasMore = it.hasMore
-                            cursor = it.cursor
+        while (hasMore) {
+            response = try {
+                Result.success(client.files().listFolderContinue(cursor))
+            } catch (e: InvalidAccessTokenException) {
+                return Result.success(GetFolderContentsResult.Unauthorized)
+            } catch (exception: DbxException) {
+                logger.error(exception)
+                return Result.failure(HostingServiceGenericFetchError())
+            }
 
-                            accumulativeFolderContents = accumulativeFolderContents.addFolderContents(getContentsFromResponse(it.entries))
-                        },
-                        onFailure = {
-                            return Result.success(GetFolderContentsResult.Success(
-                                accumulativeFolderContents,
-                                fullSyncCompleted = false
-                            ))
-                        }
-                    )
-                }
-
-                return Result.success(GetFolderContentsResult.Success(
-                    accumulativeFolderContents,
-                    fullSyncCompleted = true
-                ))
-            },
-            onFailure = {
+            response.exceptionOrNull()?.let {
                 return Result.success(GetFolderContentsResult.Success(
                     accumulativeFolderContents,
                     fullSyncCompleted = false
                 ))
             }
-        )
+
+            val data = response.getOrThrow()
+            hasMore = data.hasMore
+            cursor = data.cursor
+
+            accumulativeFolderContents = accumulativeFolderContents.addFolderContents(getContentsFromResponse(data.entries))
+        }
+
+        return Result.success(GetFolderContentsResult.Success(
+            accumulativeFolderContents,
+            fullSyncCompleted = true
+        ))
     }
 
     private fun getLocalCredential(): DbxCredential? {
