@@ -3,46 +3,28 @@ import Combine
 import shared
 
 struct ContentView: View {
-    @StateObject var viewModel = FoldersViewModel(repository: DiGraph.shared.filesRepository)
+    @State private var selectedScreen = Screen.devicePhotos
+    
+    enum Screen: String, CaseIterable, Identifiable {
+        case devicePhotos, cloudPhotos
+        var id: Self { self }
+    }
 
     var body: some View {
             VStack {
-                TabView {
-                    PeopleListView(viewModel: viewModel)
-                        .tabItem {
-                            Label("People", systemImage: "person")
-                        }
-                }.onAppear {
-                    viewModel.updateFolderContentsFromRemote(path: "/Photos")
-                }.fullScreenCover(isPresented: $viewModel.needsAuthorization) {
-                    DropboxLoginViewControllerPresentable()
+                Picker("What photos do you want to browse?", selection: $selectedScreen, content: {
+                    Text("Device").tag(Screen.devicePhotos)
+                    Text("Cloud").tag(Screen.cloudPhotos)
+                })
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.horizontal, 10.0)
+                
+                if (selectedScreen == Screen.devicePhotos) {
+                    DevicePhotosView()
+                } else {
+                    CloudPhotosView()
                 }
             }
-    }
-}
-
-struct PeopleListView: View {
-    @ObservedObject var viewModel: FoldersViewModel
-    
-    var body: some View {
-        NavigationView {
-            List(viewModel.folders, id: \.name) { person in
-                PersonView(viewModel: viewModel, folder: person)
-            }
-        }
-    }
-}
-
-struct PersonView: View {
-    var viewModel: FoldersViewModel
-    var folder: Folder
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(folder.name).font(.headline)
-            }
-        }
     }
 }
 

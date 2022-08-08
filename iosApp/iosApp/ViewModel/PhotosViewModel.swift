@@ -2,14 +2,11 @@ import Foundation
 import Combine
 import shared
 import KMPNativeCoroutinesAsync
+import UIKit
 
 @MainActor
-class FoldersViewModel: ObservableObject {
-    @Published var folders = [Folder]()
-    @Published var needsAuthorization: Bool = false
-    
-    private var pollFoldersTask: Task<(), Never>? = nil
-    private var updateFolderContentsTask: Task<(), Never>? = nil
+class PhotosViewModel: ObservableObject {
+    @Published var deviceImages = [UIImage]()
     
     private let repository: FilesRepository
     
@@ -28,7 +25,7 @@ class FoldersViewModel: ObservableObject {
         }
     }
     
-    func updateFolderContentsFromRemote(path: String) {        
+    func updateFolderContentsFromRemote(path: String) {
         updateFolderContentsTask = Task {
             let result = await convertToSwiftResult(block: {
                 try await repository.updateFolderContentsFromRemote(path: path)

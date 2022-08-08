@@ -29,5 +29,5 @@ actual val DiGraph.hostingService: HostingService
 val DiGraph.iosHostingService: iOSHostingService
     get() = DropboxHostingService(logger)
 
-val DiGraph.localPhotoStore: LocalPhotosStore
+actual val DiGraph.localPhotoStore: LocalPhotosStore
     get() = LocalPhotosStoreImp()

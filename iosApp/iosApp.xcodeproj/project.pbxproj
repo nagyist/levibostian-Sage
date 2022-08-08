@@ -12,6 +12,9 @@
 		1437D36C982673CC473FEE86 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1C055D96D12905FF909F68 /* Pods_iosApp.framework */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		F72CC03D28A198130073D4D2 /* DevicePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */; };
+		F72CC03F28A1986F0073D4D2 /* CloudPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */; };
+		F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */; };
 		F761BFD7287B4D980005C764 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = F761BFD6287B4D980005C764 /* KMPNativeCoroutinesAsync */; };
 		F761BFD9287B4D980005C764 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = F761BFD8287B4D980005C764 /* KMPNativeCoroutinesCore */; };
 		F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */; };
@@ -31,6 +34,9 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79DFB892DCF64DF4FB4A21C9 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		CE980746F09D51BF3DC9D497 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePhotosView.swift; sourceTree = "<group>"; };
+		F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPhotosView.swift; sourceTree = "<group>"; };
+		F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersViewModel.swift; sourceTree = "<group>"; };
 		F761BFDD287B4FF70005C764 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F794AC53288E22FC00680F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +98,8 @@
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				F794AC53288E22FC00680F49 /* AppDelegate.swift */,
+				F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */,
+				F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */,
+				F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -260,12 +269,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */,
 				F794AC54288E22FC00680F49 /* AppDelegate.swift in Sources */,
 				F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F72CC03D28A198130073D4D2 /* DevicePhotosView.swift in Sources */,
 				F7A2E605288C5A6700FD4352 /* ErrorWithMessage.swift in Sources */,
 				F7A2E5FE288C4CA600FD4352 /* DropboxLoginViewController.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				F72CC03F28A1986F0073D4D2 /* CloudPhotosView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,13 +407,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 552H65R858;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.sage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -415,13 +428,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 552H65R858;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.sage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
