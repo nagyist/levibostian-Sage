@@ -10,8 +10,10 @@ import earth.levi.sage.service.iOSHostingService
 import earth.levi.sage.store.KeyValueStore
 import earth.levi.sage.store.LocalPhotosStore
 import earth.levi.sage.store.LocalPhotosStoreImp
+import earth.levi.sage.store.iOSLocalPhotoStore
 import earth.levi.sage.util.Logger
 import earth.levi.sage.util.LoggerImpl
+import earth.levi.sage.util.PermissionUtil
 import platform.Foundation.NSUserDefaults
 
 actual val DiGraph.keyValueStore: KeyValueStore
@@ -31,3 +33,9 @@ val DiGraph.iosHostingService: iOSHostingService
 
 actual val DiGraph.localPhotoStore: LocalPhotosStore
     get() = LocalPhotosStoreImp()
+
+val DiGraph.iOSLocalPhotoStore: iOSLocalPhotoStore
+    get() = LocalPhotosStoreImp()
+
+actual val DiGraph.permissionUtil: PermissionUtil
+    get() = PermissionUtil()

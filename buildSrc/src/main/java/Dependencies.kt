@@ -1,6 +1,7 @@
 object Versions {
     const val sqlDelight = "1.5.3"
     const val androidJetpackNavigation = "2.5.1"
+    const val androidXCore = "1.8.0"
 }
 
 object Deps {
@@ -17,6 +18,10 @@ object Deps {
         const val nativeDriver = "com.squareup.sqldelight:native-driver:${Versions.sqlDelight}"
         const val nativeDriverMacos = "com.squareup.sqldelight:native-driver-macosx64:${Versions.sqlDelight}"
         const val sqliteDriver = "com.squareup.sqldelight:sqlite-driver:${Versions.sqlDelight}"
+    }
+
+    object AndroidX {
+        const val core = "androidx.core:core-ktx:${Versions.androidXCore}"
     }
 
     object AndroidJetpackNavigation {

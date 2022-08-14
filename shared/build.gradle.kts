@@ -80,6 +80,7 @@ kotlin {
             dependencies {
                 implementation("com.dropbox.core:dropbox-core-sdk:5.2.0")
                 implementation(Deps.SqlDelight.androidDriver)
+                implementation(Deps.AndroidX.core) // for checking runtime permissions
             }
         }
         val androidTest by getting

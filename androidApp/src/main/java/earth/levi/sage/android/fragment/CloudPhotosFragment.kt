@@ -8,13 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import earth.levi.sage.android.R
-import earth.levi.sage.android.di.filesViewModel
+import earth.levi.sage.android.di.cloudFilesViewModel
 import earth.levi.sage.android.di.sharedActivityViewModelDiGraph
-import earth.levi.sage.android.di.viewModelDiGraph
 import earth.levi.sage.android.view.adapter.FolderRecyclerViewAdapter
 import earth.levi.sage.di.DiGraph
 import earth.levi.sage.kotlin_inline.fold
@@ -26,7 +24,7 @@ class CloudPhotosFragment: Fragment() {
     private val folderRecyclerViewAdapter = FolderRecyclerViewAdapter()
 
     private val filesViewModel by sharedActivityViewModelDiGraph {
-        DiGraph.filesViewModel
+        DiGraph.cloudFilesViewModel
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

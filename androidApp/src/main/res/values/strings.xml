@@ -2,4 +2,9 @@
 <resources>
     <string name="device_images">Device photos</string>
     <string name="cloud_images">Cloud photos</string>
+    <string name="app_name">Sage Gallery</string>
+    <string name="request_permission_gallery_cta_description">Want to see photos that you have taken?</string>
+    <string name="request_permission_gallery_cta_button">Ask permission</string>
+    <string name="request_permission_gallery_cta_description_denied_permission">To see photos that you have taken, Open Settings then change Files and media permission.</string>
+    <string name="request_permission_gallery_cta_button_denied_permission">Open Settings</string>
 </resources>

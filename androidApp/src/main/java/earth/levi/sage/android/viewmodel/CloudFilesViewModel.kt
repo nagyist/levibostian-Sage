@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class FilesViewModel(
+class CloudFilesViewModel(
     private val filesRepository: FilesRepository,
     private val hostingService: AndroidHostingService
 ): ViewModel() {

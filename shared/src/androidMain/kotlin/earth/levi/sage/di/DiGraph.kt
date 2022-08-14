@@ -17,6 +17,7 @@ import earth.levi.sage.store.LocalPhotosStore
 import earth.levi.sage.store.LocalPhotosStoreImp
 import earth.levi.sage.util.Logger
 import earth.levi.sage.util.LoggerImpl
+import earth.levi.sage.util.PermissionUtil
 
 /**
  * To avoid the di graph holding a strong reference to Context (lint says this error prone to do),
@@ -55,3 +56,6 @@ actual val DiGraph.localPhotoStore: LocalPhotosStore
 
 val DiGraph.contentResolver: ContentResolver
     get() = ContextDependents.contentResolver
+
+actual val DiGraph.permissionUtil: PermissionUtil
+    get() = PermissionUtil()

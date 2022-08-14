@@ -4,15 +4,16 @@ import android.content.ContentResolver
 import android.content.ContentUris
 import android.provider.MediaStore
 import earth.levi.sage.type.LocalPhoto
+import earth.levi.sage.type.Photo
 import earth.levi.sage.util.Logger
 
 // https://developer.android.com/training/data-storage/shared/media
 // https://github.com/android/storage-samples/tree/main/MediaStore
-actual class LocalPhotosStoreImp(
+class LocalPhotosStoreImp(
     private val contentResolver: ContentResolver,
     private val logger: Logger): LocalPhotosStore {
 
-    override suspend fun fetchLocalPhotos(): List<LocalPhoto> {
+    override suspend fun fetchLocalPhotos(): List<Photo> {
         val selectColumns = arrayOf(
             MediaStore.Images.Media._ID,
             MediaStore.Images.Media.DATE_ADDED,
@@ -22,7 +23,7 @@ actual class LocalPhotosStoreImp(
         val whereArgs = null
         val sortOrder = "${MediaStore.Images.Media.DATE_ADDED} DESC"
 
-        val allLocalPhotos = mutableListOf<LocalPhoto>()
+        val allLocalPhotos = mutableListOf<Photo>()
 
         contentResolver.query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -46,7 +47,7 @@ actual class LocalPhotosStoreImp(
                     id
                 )
 
-                allLocalPhotos.add(LocalPhoto(id = id.toString(), localPath = path))
+                allLocalPhotos.add(Photo.local(LocalPhoto(id = id.toString(), localPath = path)))
             }
         }
 

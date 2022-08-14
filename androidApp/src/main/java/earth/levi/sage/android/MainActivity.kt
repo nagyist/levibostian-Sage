@@ -1,33 +1,12 @@
 package earth.levi.sage.android
 
-import android.Manifest
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
-import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import earth.levi.sage.android.di.filesViewModel
-import earth.levi.sage.android.di.viewModelDiGraph
+import com.google.android.material.tabs.TabLayout
 import earth.levi.sage.android.fragment.CloudPhotosFragment
 import earth.levi.sage.android.fragment.DevicePhotosFragment
-import earth.levi.sage.android.view.adapter.FolderRecyclerViewAdapter
-import earth.levi.sage.android.view.adapter.PhotoRecyclerViewAdapter
-import earth.levi.sage.di.DiGraph
-import earth.levi.sage.di.contentResolver
-import earth.levi.sage.di.localPhotoStore
-import earth.levi.sage.kotlin_inline.fold
-import earth.levi.sage.type.result.GetFolderContentsResult
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,17 +36,23 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).apply {
-            setOnItemSelectedListener { menuItem ->
-                setCurrentFragment = when (menuItem.itemId) {
-                    R.id.action_local_images -> OwnedFragment.DEVICE_PHOTOS
-                    R.id.action_cloud_images -> OwnedFragment.CLOUD_PHOTOS
-                    else -> return@setOnItemSelectedListener  false
+        findViewById<TabLayout>(R.id.tab_layout).apply {
+            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    setCurrentFragment = when (tab.text) {
+                        getString(R.string.device_images) -> OwnedFragment.DEVICE_PHOTOS
+                        getString(R.string.cloud_images) -> OwnedFragment.CLOUD_PHOTOS
+                        else -> return
+                    }
                 }
-
-                return@setOnItemSelectedListener true
-            }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+            })
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         setCurrentFragment = OwnedFragment.DEVICE_PHOTOS
     }

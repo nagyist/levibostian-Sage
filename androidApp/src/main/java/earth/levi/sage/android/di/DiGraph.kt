@@ -7,13 +7,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import earth.levi.sage.android.viewmodel.FilesViewModel
-import earth.levi.sage.di.DiGraph
-import earth.levi.sage.di.androidHostingService
-import earth.levi.sage.di.filesRepository
+import earth.levi.sage.android.viewmodel.CloudFilesViewModel
+import earth.levi.sage.android.viewmodel.DevicePhotosViewModel
+import earth.levi.sage.di.*
 
-val DiGraph.filesViewModel: FilesViewModel
-    get() = FilesViewModel(filesRepository, androidHostingService)
+val DiGraph.cloudFilesViewModel: CloudFilesViewModel
+    get() = CloudFilesViewModel(filesRepository, androidHostingService)
+
+val DiGraph.devicePhotosViewModel: DevicePhotosViewModel
+    get() = DevicePhotosViewModel(permissionUtil, localPhotoStore, samplePhotosUtil)
 
 inline fun <reified VM : ViewModel> ComponentActivity.viewModelDiGraph(
     noinline createInstance: (() -> VM)

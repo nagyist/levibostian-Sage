@@ -8,6 +8,9 @@ import earth.levi.sage.service.HostingService
 import earth.levi.sage.store.KeyValueStore
 import earth.levi.sage.store.LocalPhotosStore
 import earth.levi.sage.util.Logger
+import earth.levi.sage.util.PermissionUtil
+import earth.levi.sage.util.SamplePhotosUtil
+import earth.levi.sage.util.SamplePhotosUtilImp
 
 object DiGraph
 
@@ -27,3 +30,8 @@ expect val DiGraph.sqlDriver: SqlDriver
 
 val DiGraph.filesRepository: FilesRepository
     get() = FilesRepositoryImpl(database, hostingService)
+
+expect val DiGraph.permissionUtil: PermissionUtil
+
+val DiGraph.samplePhotosUtil: SamplePhotosUtil
+    get() = SamplePhotosUtilImp()
