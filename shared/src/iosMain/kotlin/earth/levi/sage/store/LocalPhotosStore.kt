@@ -2,7 +2,6 @@ package earth.levi.sage.store
 
 import earth.levi.sage.type.LoadedDevicePhotoAsset
 import earth.levi.sage.type.Photo
-import earth.levi.sage.type.result.GetDevicePhotosResult
 import platform.CoreGraphics.CGSizeMake
 import platform.Foundation.NSSortDescriptor
 import platform.Photos.*
@@ -10,6 +9,7 @@ import platform.UIKit.UIImage
 
 interface iOSLocalPhotoStore: LocalPhotosStore {
     fun loadThumbnail(asset: LoadedDevicePhotoAsset, width: Double, height: Double, onComplete: (Pair<PHAsset, UIImage?>) -> Unit)
+    fun loadOriginalSize(asset: LoadedDevicePhotoAsset, onComplete: (Pair<PHAsset, UIImage?>) -> Unit)
 }
 
 class LocalPhotosStoreImp: iOSLocalPhotoStore {
@@ -34,6 +34,10 @@ class LocalPhotosStoreImp: iOSLocalPhotoStore {
         imageManager.requestImageForAsset(asset, CGSizeMake(width = width, height = height), PHImageContentModeAspectFit, options = null) { image, _ ->
             onComplete(Pair(asset, image))
         }
+    }
+
+    override fun loadOriginalSize(asset: LoadedDevicePhotoAsset, onComplete: (Pair<PHAsset, UIImage?>) -> Unit) {
+        loadThumbnail(asset, PHImageManagerMaximumSize.width, PHImageManagerMaximumSize.height, onComplete)
     }
 
 }

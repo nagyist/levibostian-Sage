@@ -4,11 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <earth.levi.sage.android.widget.SquarePhotoImageView
         android:id="@+id/photo_imageview"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
         android:layout_height="wrap_content"
         tools:src="@android:drawable/gallery_thumb"/>
 

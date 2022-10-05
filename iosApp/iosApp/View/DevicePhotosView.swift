@@ -17,27 +17,32 @@ struct DevicePhotosView: View {
     
     var body: some View {
         VStack {
-            GeometryReader { geoReader in
-                ScrollView {
-                    LazyVGrid(columns: gridColumns) {
-                        ForEach(viewModel.deviceImages) { asset in
-                            GalleryGridCellView(asset: asset, imageWidth: geoReader.size.width / CGFloat(gridColumns.count))
+                GeometryReader { geoReader in
+                    NavigationView {
+                        ScrollView {
+                                LazyVGrid(columns: gridColumns) {
+                                    ForEach(viewModel.deviceImages) { photo in                                        
+                                        NavigationLink(destination: PhotoView(photo: photo)) {
+                                            PhotoImageView(photo: photo, width: geoReader.size.width / CGFloat(gridColumns.count)).xray()
+                                        }
+                                    }
+                                }
+                        }.onAppear {
+                            if (viewModel.needPermissionToAccessLocalPhotos) {
+                                viewModel.fetchSamplePhotos()
+                            } else {
+                                viewModel.fetchLocalPhotos()
+                            }
                         }
+                        .navigationBarHidden(true)
                     }
                 }
-            }
-            
-            if (viewModel.needPermissionToAccessLocalPhotos) {
-                CTAButtonView(buttonText: viewModel.localPhotosPermissionCtaButtonText, descriptionText: viewModel.localPhotosPermissionCtaDescriptionText) {
-                    viewModel.askForPermissionLocalPhotos()
+                
+                if (viewModel.needPermissionToAccessLocalPhotos) {
+                    CTAButtonView(buttonText: viewModel.localPhotosPermissionCtaButtonText, descriptionText: viewModel.localPhotosPermissionCtaDescriptionText) {
+                        viewModel.askForPermissionLocalPhotos()
+                    }
                 }
-            }
-        }.onAppear {
-            if (viewModel.needPermissionToAccessLocalPhotos) {
-                viewModel.fetchSamplePhotos()
-            } else {
-                viewModel.fetchLocalPhotos()
-            }
         }
     }
 }

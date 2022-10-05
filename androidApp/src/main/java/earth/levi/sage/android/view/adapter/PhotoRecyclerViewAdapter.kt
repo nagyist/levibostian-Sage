@@ -25,6 +25,8 @@ import java.lang.Exception
 
 class PhotoRecyclerViewAdapter : ListAdapter<Photo, PhotoRecyclerViewAdapter.ViewHolder>(DiffCallback) {
 
+    lateinit var onItemClick: (Int, Photo) -> Unit
+
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<Photo>() {
             override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
@@ -43,26 +45,20 @@ class PhotoRecyclerViewAdapter : ListAdapter<Photo, PhotoRecyclerViewAdapter.Vie
 
     class ViewHolder(private val binding: AdapterPhotoRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: Photo) {
-            val picassoInstance = Picasso.get()
-
-            val requestBuilder = when {
-                photo.isLocal -> picassoInstance.load(Uri.fromFile(File(photo.localPhotoAsset!!.path)))
-                photo.isRemote -> picassoInstance.load(photo.remotePhotoUrl!!)
-                else -> throw RuntimeException("should not happen")
-            }
-
-            requestBuilder
-                .placeholder(R.drawable.ic_baseline_cloud_24)
-                .resize(400, 400)
-                .centerCrop()
-                .error(R.drawable.ic_baseline_smartphone_24)
-                .into(binding.photoImageview)
+            binding.photoImageview.photo = photo
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        AdapterPhotoRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = AdapterPhotoRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return ViewHolder(binding).also { viewHolder ->
+            // set click listener in onCreate function instead of onBind for better performance.
+            binding.photoImageview.setOnClickListener {
+                onItemClick(viewHolder.bindingAdapterPosition, getItem(viewHolder.bindingAdapterPosition))
+            }
+        }
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))

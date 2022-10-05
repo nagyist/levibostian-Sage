@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <earth.levi.sage.android.view.CTAButtonView
+    <earth.levi.sage.android.widget.CTAButtonView
         android:id="@+id/cta_view"
         android:layout_margin="10dp"
         android:layout_width="match_parent"

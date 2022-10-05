@@ -16,11 +16,6 @@ struct RemoteImageView: View {
     let photo: Photo
     let targetSize: CGSize
     
-    init(asset: Photo, targetSize: CGSize) {
-        self.photo = asset
-        self.targetSize = targetSize
-    }
-    
     var body: some View {
         if let remoteImageUrl = photo.remotePhotoUrl,
         let url = URL(string: remoteImageUrl) {

@@ -7,4 +7,5 @@
     <string name="request_permission_gallery_cta_button">Ask permission</string>
     <string name="request_permission_gallery_cta_description_denied_permission">To see photos that you have taken, Open Settings then change Files and media permission.</string>
     <string name="request_permission_gallery_cta_button_denied_permission">Open Settings</string>
+    <string name="share_photo_action">Share photo</string>
 </resources>

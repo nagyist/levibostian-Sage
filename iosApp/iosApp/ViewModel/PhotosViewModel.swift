@@ -62,11 +62,7 @@ class PhotosViewModel: ObservableObject {
     func fetchLocalPhotos() {
         fetchLocalPhotoTask = Task {
             do {
-                let result = try await localPhotoStore.fetchLocalPhotos()
-                
-                if let imageAssets = (result as? GetDevicePhotosResult.Success)?.contents {
-                    self.deviceImages = imageAssets
-                }
+                self.deviceImages = try await localPhotoStore.fetchLocalPhotos()
             } catch {
                 print("failed with eror \(error)")
             }

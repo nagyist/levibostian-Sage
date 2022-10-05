@@ -1,33 +1,32 @@
 package earth.levi.sage.android.fragment
 
-import android.Manifest
-import android.content.pm.PackageManager
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import earth.levi.sage.android.R
-import earth.levi.sage.android.di.cloudFilesViewModel
 import earth.levi.sage.android.di.devicePhotosViewModel
 import earth.levi.sage.android.di.sharedActivityViewModelDiGraph
-import earth.levi.sage.android.view.CTAButtonView
+import earth.levi.sage.android.widget.CTAButtonView
 import earth.levi.sage.android.view.adapter.PhotoRecyclerViewAdapter
 import earth.levi.sage.di.DiGraph
-import earth.levi.sage.di.localPhotoStore
+import earth.levi.sage.type.Photo
 import kotlinx.coroutines.launch
 
 class DevicePhotosFragment: Fragment() {
 
-    private val photoRecylerViewAdapter = PhotoRecyclerViewAdapter()
+    private val photoRecylerViewAdapter = PhotoRecyclerViewAdapter().also {
+        it.onItemClick = { position, photo ->
+            deviceFilesViewModel.selectedPhoto = photo
+        }
+    }
 
     private val deviceFilesViewModel by sharedActivityViewModelDiGraph {
         DiGraph.devicePhotosViewModel

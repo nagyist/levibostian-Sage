@@ -3,10 +3,20 @@ package earth.levi.sage.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import earth.levi.sage.android.di.devicePhotosViewModel
+import earth.levi.sage.android.di.viewModelDiGraph
 import earth.levi.sage.android.fragment.CloudPhotosFragment
 import earth.levi.sage.android.fragment.DevicePhotosFragment
+import earth.levi.sage.android.fragment.PhotoFragment
+import earth.levi.sage.di.DiGraph
+import earth.levi.sage.type.Photo
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +30,10 @@ class MainActivity : AppCompatActivity() {
                 CLOUD_PHOTOS -> CloudPhotosFragment()
             }
         }
+    }
+
+    private val devicePhotosViewModel by viewModelDiGraph {
+        DiGraph.devicePhotosViewModel
     }
 
     private var setCurrentFragment: OwnedFragment = OwnedFragment.DEVICE_PHOTOS
@@ -49,11 +63,29 @@ class MainActivity : AppCompatActivity() {
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                devicePhotosViewModel.observeSelectedPhoto.collect { it?.let { selectedPhoto ->
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, PhotoFragment())
+                        .addToBackStack(null)
+                        .commit()
+                }}
+            }
+        }
     }
 
     override fun onStart() {
         super.onStart()
 
         setCurrentFragment = OwnedFragment.DEVICE_PHOTOS
+    }
+
+    override fun onBackPressed() {
+        val fragment = this.supportFragmentManager.findFragmentById(R.id.fragment_container)
+        (fragment as? OnBackPressed)?.onBackPressed()?.not()?.let {
+            super.onBackPressed()
+        }
     }
 }

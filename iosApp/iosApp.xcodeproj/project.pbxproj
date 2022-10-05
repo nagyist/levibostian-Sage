@@ -16,10 +16,12 @@
 		F72CC03F28A1986F0073D4D2 /* CloudPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */; };
 		F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */; };
 		F72CC04828A5C0040073D4D2 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */; };
+		F7558CB628B041F600A86BF3 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB528B041F600A86BF3 /* PhotoView.swift */; };
+		F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */; };
+		F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */; };
 		F758D34E28A5C1A300027D5F /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = F758D34D28A5C1A300027D5F /* NukeUI */; };
 		F758D35128A69A9800027D5F /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35028A69A9800027D5F /* ImageExtension.swift */; };
 		F758D35428A69B4200027D5F /* PhotoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35328A69B4200027D5F /* PhotoExtension.swift */; };
-		F758D35628A69B8D00027D5F /* GalleryGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35528A69B8D00027D5F /* GalleryGridCellView.swift */; };
 		F758D35828A69BF700027D5F /* CTAButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35728A69BF700027D5F /* CTAButtonView.swift */; };
 		F758D35A28A6A4CE00027D5F /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35928A6A4CE00027D5F /* ButtonExtension.swift */; };
 		F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35C28A6AF4000027D5F /* SwiftUIDebugUtils.swift */; };
@@ -47,9 +49,11 @@
 		F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPhotosView.swift; sourceTree = "<group>"; };
 		F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		F7558CB528B041F600A86BF3 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
+		F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		F758D35028A69A9800027D5F /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		F758D35328A69B4200027D5F /* PhotoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoExtension.swift; sourceTree = "<group>"; };
-		F758D35528A69B8D00027D5F /* GalleryGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryGridCellView.swift; sourceTree = "<group>"; };
 		F758D35728A69BF700027D5F /* CTAButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButtonView.swift; sourceTree = "<group>"; };
 		F758D35928A6A4CE00027D5F /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		F758D35C28A6AF4000027D5F /* SwiftUIDebugUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDebugUtils.swift; sourceTree = "<group>"; };
@@ -159,8 +163,10 @@
 				F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */,
 				F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */,
 				F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */,
-				F758D35528A69B8D00027D5F /* GalleryGridCellView.swift */,
 				F758D35728A69BF700027D5F /* CTAButtonView.swift */,
+				F7558CB528B041F600A86BF3 /* PhotoView.swift */,
+				F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */,
+				F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -322,14 +328,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */,
-				F758D35628A69B8D00027D5F /* GalleryGridCellView.swift in Sources */,
 				F794AC54288E22FC00680F49 /* AppDelegate.swift in Sources */,
+				F7558CB628B041F600A86BF3 /* PhotoView.swift in Sources */,
 				F758D35428A69B4200027D5F /* PhotoExtension.swift in Sources */,
 				F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */,
 				F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */,
 				F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				F72CC03D28A198130073D4D2 /* DevicePhotosView.swift in Sources */,
+				F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */,
+				F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */,
 				F7A2E605288C5A6700FD4352 /* ErrorWithMessage.swift in Sources */,
 				F7A2E5FE288C4CA600FD4352 /* DropboxLoginViewController.swift in Sources */,
 				F758D35828A69BF700027D5F /* CTAButtonView.swift in Sources */,

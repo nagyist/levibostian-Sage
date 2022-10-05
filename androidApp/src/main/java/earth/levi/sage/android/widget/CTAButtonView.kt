@@ -1,4 +1,4 @@
-package earth.levi.sage.android.view
+package earth.levi.sage.android.widget
 
 
 import android.widget.LinearLayout
@@ -57,10 +57,6 @@ class CTAButtonView: CardView {
         LayoutInflater.from(context).inflate(R.layout.view_ctabutton, this, true)
 
         radius = 80.toFloat()
-
-        //setBackgroundColor(android.R.color.transparent)
-
-        //layoutParams = ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         setPadding(10, 10, 10, 10)
 
         text = findViewById(R.id.text)

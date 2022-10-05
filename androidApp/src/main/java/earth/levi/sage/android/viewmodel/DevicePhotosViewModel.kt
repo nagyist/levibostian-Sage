@@ -43,8 +43,15 @@ class DevicePhotosViewModel(
 
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
 
+    private val _selectedPhoto = MutableStateFlow<Photo?>(null)
+    val observeSelectedPhoto: StateFlow<Photo?> = _selectedPhoto
+    var selectedPhoto: Photo?
+        get() = _selectedPhoto.value
+        set(value) { _selectedPhoto.value = value }
+
     private lateinit var fragment: WeakReference<Fragment>
 
+    // this probably wont work because we are sharing viewmodel instance between multiple fragments.....
     fun initialize(fragment: Fragment) {
         this.fragment = WeakReference(fragment)
 
