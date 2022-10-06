@@ -12,12 +12,12 @@ struct ContentView: View {
 
     var body: some View {
             VStack {
-                Picker("What photos do you want to browse?", selection: $selectedScreen, content: {
-                    Text("Device").tag(Screen.devicePhotos)
-                    Text("Cloud").tag(Screen.cloudPhotos)
-                })
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal, 10.0)
+//                Picker("What photos do you want to browse?", selection: $selectedScreen, content: {
+//                    Text("Device").tag(Screen.devicePhotos)
+//                    Text("Cloud").tag(Screen.cloudPhotos)
+//                })
+//                .pickerStyle(SegmentedPickerStyle())
+//                .padding(.horizontal, 10.0)
                 
                 if (selectedScreen == Screen.devicePhotos) {
                     DevicePhotosView()

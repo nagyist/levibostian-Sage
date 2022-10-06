@@ -8,6 +8,7 @@
         android:id="@+id/photo_imageview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:src="@android:drawable/gallery_thumb"/>
+        android:padding="@dimen/grid_cell_spacing"
+        tools:src="@android:drawable/gallery_thumb" />
 
 </FrameLayout>

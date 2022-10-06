@@ -25,9 +25,9 @@ struct RemoteImageView: View {
                     
                     image
                 } else if state.error != nil {
-                    Color.red // Indicates an error
+                    Color.galleryPlaceholder // Indicates an error
                 } else {
-                    Color.blue // Acts as a placeholder
+                    Color.galleryPlaceholder // Acts as a placeholder
                 }
             }
             

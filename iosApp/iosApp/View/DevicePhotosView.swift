@@ -14,16 +14,17 @@ import Photos
 struct DevicePhotosView: View {
     @StateObject var viewModel = PhotosViewModel()
     @State var gridColumns = [GridItem(), GridItem(), GridItem()]
+    private let gridItemSpacing: Double = 10
     
     var body: some View {
         VStack {
                 GeometryReader { geoReader in
                     NavigationView {
                         ScrollView {
-                                LazyVGrid(columns: gridColumns) {
+                            LazyVGrid(columns: gridColumns, spacing: gridItemSpacing) {
                                     ForEach(viewModel.deviceImages) { photo in                                        
                                         NavigationLink(destination: PhotoView(photo: photo)) {
-                                            PhotoImageView(photo: photo, width: geoReader.size.width / CGFloat(gridColumns.count)).xray()
+                                            PhotoImageView(photo: photo, width: (Double(geoReader.size.width) / Double(gridColumns.count)) - gridItemSpacing / 2)
                                         }
                                     }
                                 }
@@ -33,8 +34,7 @@ struct DevicePhotosView: View {
                             } else {
                                 viewModel.fetchLocalPhotos()
                             }
-                        }
-                        .navigationBarHidden(true)
+                        }.navigationBarTitle("Gallery", displayMode: .large)
                     }
                 }
                 

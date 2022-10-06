@@ -13,6 +13,8 @@ import java.io.File
 
 open class PhotoImageView: AppCompatImageView {
 
+    var shouldAnimateFromPlaceholder: Boolean = true
+
     var photo: Photo? = null
         set(value) {
             field = value
@@ -26,11 +28,13 @@ open class PhotoImageView: AppCompatImageView {
                 else -> throw RuntimeException("should not happen")
             }
 
+            if (!shouldAnimateFromPlaceholder) requestBuilder.noFade()
+
             buildOnPicassoRequestBuilder(
                 requestBuilder
-                    .placeholder(R.drawable.ic_baseline_cloud_24)
+                    .placeholder(R.color.remote_image_placeholder)
+                    .error(R.color.remote_image_placeholder)
                     .fit()
-                    .error(R.drawable.ic_baseline_smartphone_24)
             ).into(this)
         }
 

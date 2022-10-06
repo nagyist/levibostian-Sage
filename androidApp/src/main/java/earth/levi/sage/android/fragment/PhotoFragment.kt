@@ -91,6 +91,7 @@ class PhotoFragment: Fragment(), OnBackPressed {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 devicePhotosViewModel.observeSelectedPhoto.collect { it.let { photo ->
                     view.findViewById<PhotoImageView>(R.id.photo_imageview).apply {
+                        shouldAnimateFromPlaceholder = false
                         this.photo = photo
                     }
                 }}

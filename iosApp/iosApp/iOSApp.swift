@@ -14,7 +14,8 @@ struct iOSApp: App {
                     if !handledByDropbox {
                         // we handle it ourselves.
                     }
-                }.accentColor(Color("AccentColor")) // sets Color.accentColor for all children
+                }
+                .accentColor(Color("AccentColor")) // sets Color.accentColor for all children
         }
 	}
 }

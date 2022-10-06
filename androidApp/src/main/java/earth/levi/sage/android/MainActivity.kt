@@ -50,19 +50,19 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        findViewById<TabLayout>(R.id.tab_layout).apply {
-            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab) {
-                    setCurrentFragment = when (tab.text) {
-                        getString(R.string.device_images) -> OwnedFragment.DEVICE_PHOTOS
-                        getString(R.string.cloud_images) -> OwnedFragment.CLOUD_PHOTOS
-                        else -> return
-                    }
-                }
-                override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                override fun onTabReselected(tab: TabLayout.Tab?) {}
-            })
-        }
+//        findViewById<TabLayout>(R.id.tab_layout).apply {
+//            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+//                override fun onTabSelected(tab: TabLayout.Tab) {
+//                    setCurrentFragment = when (tab.text) {
+//                        getString(R.string.device_images) -> OwnedFragment.DEVICE_PHOTOS
+//                        getString(R.string.cloud_images) -> OwnedFragment.CLOUD_PHOTOS
+//                        else -> return
+//                    }
+//                }
+//                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+//                override fun onTabReselected(tab: TabLayout.Tab?) {}
+//            })
+//        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

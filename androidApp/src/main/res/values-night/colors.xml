@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_color_primary">#FFF8F0</color>
+    <color name="toolbar_icon_color">@color/text_color_primary</color>
+    <color name="remote_image_placeholder">#474747</color>
+</resources>

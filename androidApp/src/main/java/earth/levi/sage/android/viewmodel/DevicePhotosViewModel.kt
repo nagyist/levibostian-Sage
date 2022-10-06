@@ -69,7 +69,7 @@ class DevicePhotosViewModel(
     }
 
     fun fetchSamplePhotos() {
-        _devicePhotos.value = samplePhotosUtil.getSamplePhotos(randomOrder = true)
+        _devicePhotos.value = samplePhotosUtil.getSamplePhotos(randomOrder = false)
     }
 
     fun checkPermissionStatus() {
