@@ -1,0 +1,38 @@
+name: Deploy Android 
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy-app:
+    name: Deploy app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby to run Fastlane
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11' # Robolectric requires v9, but we choose LTS: https://adoptopenjdk.net/
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Setup for Deploying
+        run: |
+          echo "${{ secrets.FASTLANE_GOOGLECLOUD_SERVICEACCOUNT_B64 }}" | base64 -d > fastlane_googlecloud_service_account.json
+          echo "${{ secrets.ANDROID_CODESIGN_KEYSTORE_BASE64 }}" | base64 -d > androidApp/keystores/uploadkey.jks
+        env:
+          FASTLANE_GOOGLECLOUD_SERVICEACCOUNT_B64: ${{ secrets.FASTLANE_GOOGLECLOUD_SERVICEACCOUNT_B64 }}
+          ANDROID_CODESIGN_KEYSTORE_BASE64: ${{ secrets.ANDROID_CODESIGN_KEYSTORE_BASE64 }}
+            
+      - name: Deploy build via Fastlane
+        run: 'bundle exec fastlane android deploy_googleplay scope:internal packageName:"earth.levi.sage"'
+        env:
+          ANDROID_SIGNING_ALIAS: ${{ secrets.ANDROID_SIGNING_ALIAS }}
+          ANDROID_SIGNING_KEY_PASSWORD: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}

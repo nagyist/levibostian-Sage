@@ -8,15 +8,24 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "earth.levi.sage.android"
+        applicationId = "earth.levi.sage"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
+    signingConfigs {
+        create("release") {
+            storeFile = rootProject.file("androidApp/keystores/uploadkey.jks")
+            storePassword = System.getenv("ANDROID_SIGNING_KEY_PASSWORD")
+            keyAlias = System.getenv("ANDROID_SIGNING_ALIAS")
+            keyPassword = System.getenv("ANDROID_SIGNING_KEY_PASSWORD")
+        }
+    }
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     buildFeatures {

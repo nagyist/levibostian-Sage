@@ -1,0 +1,37 @@
+platform :android do
+
+  # example: `bundle exec fastlane android set_version version:1.0.0`
+  lane :update_version do |values| 
+    new_app_version = values[:version]
+    new_build_number = Time.now.to_i # make the build number always unique. we do this with time. 
+
+    android_set_version_name(version_name: new_app_version)
+    android_set_version_code(version_code: new_build_number)
+  end 
+
+  # example: `bundle exec fastlane android deploy_googleplay scope:internal packageName:'com.foo.bar'`
+  lane :deploy_googleplay do |values|
+    track_for_release = values[:scope]
+    package_name = values[:package_name]
+
+    build_android_app(
+      task: 'bundle',
+      build_type: 'Release'
+    )
+
+    upload_to_play_store(
+      package_name: package_name,
+      release_status: 'completed', # Release status (used when uploading new apks/aabs) - valid values are completed, draft, halted, inProgress
+      track: track_for_release, # The track of the application to use. The default available tracks are: production, beta, alpha, internal
+      rollout: "1", # The percentage of the user fraction when uploading to the rollout track (setting to 1 will complete the rollout)
+      json_key: 'fastlane_googlecloud_service_account.json',
+      skip_upload_apk: true,
+      aab: 'androidApp/build/outputs/bundle/release/androidApp-release.aab',
+      mapping: 'androidApp/build/outputs/mapping/release/mapping.txt'
+    )
+  end 
+
+end 
+
+platform :ios do 
+end 

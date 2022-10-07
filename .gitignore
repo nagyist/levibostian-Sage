@@ -1,6 +1,8 @@
 iosApp/iosApp/Info.plist
 secret.properties
 Secrets.kt
+androidApp/keystores/*.jks
+fastlane_googlecloud_service_account.json
 
 *.iml
 .gradle
