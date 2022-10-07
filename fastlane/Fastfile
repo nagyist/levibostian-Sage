@@ -5,8 +5,8 @@ platform :android do
     new_app_version = values[:version]
     new_build_number = Time.now.to_i # make the build number always unique. we do this with time. 
 
-    android_set_version_name(version_name: new_app_version)
-    android_set_version_code(version_code: new_build_number)
+    android_set_version_name(version_name: new_app_version, gradle_file: 'androidApp/build.gradle.kts')
+    android_set_version_code(version_code: new_build_number, gradle_file: 'androidApp/build.gradle.kts')
   end 
 
   # example: `bundle exec fastlane android deploy_googleplay scope:internal packageName:'com.foo.bar'`

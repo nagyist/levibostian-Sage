@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: android_set_version_name" time="0.001565">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: android_set_version_code" time="0.001255">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
