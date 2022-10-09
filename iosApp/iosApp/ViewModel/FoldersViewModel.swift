@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 import shared
-import KMPNativeCoroutinesAsync
 
 @MainActor
 class FoldersViewModel: ObservableObject {
@@ -18,10 +17,10 @@ class FoldersViewModel: ObservableObject {
                 
         pollFoldersTask = Task {
             do {
-                let stream = asyncStream(for: repository.observeFoldersAtPathNative(path: "/Photos"))
-                for try await data in stream {
-                    self.folders = data
-                }
+//                let stream = asyncStream(for: repository.observeFoldersAtPathNative(path: "/Photos"))
+//                for try await data in stream {
+//                    self.folders = data
+//                }
             } catch {
                 print("Failed with error: \(error)")
             }

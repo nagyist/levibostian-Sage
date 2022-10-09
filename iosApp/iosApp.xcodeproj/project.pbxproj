@@ -27,8 +27,6 @@
 		F758D35A28A6A4CE00027D5F /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35928A6A4CE00027D5F /* ButtonExtension.swift */; };
 		F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35C28A6AF4000027D5F /* SwiftUIDebugUtils.swift */; };
 		F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35E28A6B04B00027D5F /* ColorExtension.swift */; };
-		F761BFD7287B4D980005C764 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = F761BFD6287B4D980005C764 /* KMPNativeCoroutinesAsync */; };
-		F761BFD9287B4D980005C764 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = F761BFD8287B4D980005C764 /* KMPNativeCoroutinesCore */; };
 		F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */; };
 		F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F761BFDD287B4FF70005C764 /* libsqlite3.tbd */; };
 		F794AC54288E22FC00680F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794AC53288E22FC00680F49 /* AppDelegate.swift */; };
@@ -74,10 +72,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F758D34E28A5C1A300027D5F /* NukeUI in Frameworks */,
-				F761BFD7287B4D980005C764 /* KMPNativeCoroutinesAsync in Frameworks */,
 				1437D36C982673CC473FEE86 /* Pods_iosApp.framework in Frameworks */,
 				F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */,
-				F761BFD9287B4D980005C764 /* KMPNativeCoroutinesCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,8 +230,6 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
-				F761BFD6287B4D980005C764 /* KMPNativeCoroutinesAsync */,
-				F761BFD8287B4D980005C764 /* KMPNativeCoroutinesCore */,
 				F758D34D28A5C1A300027D5F /* NukeUI */,
 			);
 			productName = iosApp;
@@ -267,7 +261,6 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				F761BFD5287B4D980005C764 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 				F758D34C28A5C1A300027D5F /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
@@ -554,14 +547,6 @@
 				minimumVersion = 11.0.0;
 			};
 		};
-		F761BFD5287B4D980005C764 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
-			requirement = {
-				kind = exactVersion;
-				version = 0.12.6;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -569,16 +554,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F758D34C28A5C1A300027D5F /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
-		};
-		F761BFD6287B4D980005C764 /* KMPNativeCoroutinesAsync */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F761BFD5287B4D980005C764 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
-			productName = KMPNativeCoroutinesAsync;
-		};
-		F761BFD8287B4D980005C764 /* KMPNativeCoroutinesCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F761BFD5287B4D980005C764 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
-			productName = KMPNativeCoroutinesCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
