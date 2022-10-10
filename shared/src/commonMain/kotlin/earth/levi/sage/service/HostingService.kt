@@ -1,6 +1,7 @@
 package earth.levi.sage.service
 
 import earth.levi.sage.kotlin_inline.Result
+import earth.levi.sage.type.HostingServicePermissionScope
 import earth.levi.sage.type.result.GetFolderContentsResult
 
 /**

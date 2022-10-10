@@ -11,7 +11,7 @@ import SwiftUI
 import shared
 import Photos
 
-struct PhotoView: View {
+struct SinglePhotoView: View {
     
     let photo: Photo
     
@@ -42,7 +42,7 @@ struct PhotoView: View {
     }
 }
 
-extension PhotoView {
+extension SinglePhotoView {
     class ViewModel: ObservableObject {
         @Published private(set) var image: UIImage? = nil
         

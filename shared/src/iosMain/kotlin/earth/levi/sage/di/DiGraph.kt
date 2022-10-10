@@ -28,8 +28,9 @@ actual val DiGraph.sqlDriver: SqlDriver
 actual val DiGraph.hostingService: HostingService
     get() =  iosHostingService
 
-val DiGraph.iosHostingService: iOSHostingService
-    get() = DropboxHostingService(logger)
+val DiGraph.iosHostingService: iOSHostingService by lazy {
+    DropboxHostingService(DiGraph.logger)
+}
 
 actual val DiGraph.localPhotoStore: LocalPhotosStore
     get() = LocalPhotosStoreImp()

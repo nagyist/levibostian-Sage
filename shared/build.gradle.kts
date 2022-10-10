@@ -46,6 +46,7 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
+            isStatic = false // fixes Xcode SwiftUI preview: https://github.com/cashapp/sqldelight/issues/2512#issuecomment-937699879
         }
 
         /**

@@ -13,11 +13,10 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		F71E504528EE098E0053EBE5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E504428EE098E0053EBE5 /* Color.swift */; };
-		F72CC03D28A198130073D4D2 /* DevicePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */; };
-		F72CC03F28A1986F0073D4D2 /* CloudPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */; };
+		F72CC03D28A198130073D4D2 /* PhotoGalleryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03C28A198130073D4D2 /* PhotoGalleryGridView.swift */; };
 		F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */; };
 		F72CC04828A5C0040073D4D2 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */; };
-		F7558CB628B041F600A86BF3 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB528B041F600A86BF3 /* PhotoView.swift */; };
+		F7558CB628B041F600A86BF3 /* SinglePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */; };
 		F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */; };
 		F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */; };
 		F758D34E28A5C1A300027D5F /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = F758D34D28A5C1A300027D5F /* NukeUI */; };
@@ -29,6 +28,8 @@
 		F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35E28A6B04B00027D5F /* ColorExtension.swift */; };
 		F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */; };
 		F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F761BFDD287B4FF70005C764 /* libsqlite3.tbd */; };
+		F7821BA628F32152006AF988 /* HostingServiceAuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7821BA528F32152006AF988 /* HostingServiceAuthFlow.swift */; };
+		F7821BA828F327BF006AF988 /* HostingServiceScopesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7821BA728F327BF006AF988 /* HostingServiceScopesListView.swift */; };
 		F794AC54288E22FC00680F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794AC53288E22FC00680F49 /* AppDelegate.swift */; };
 		F7A2E5FE288C4CA600FD4352 /* DropboxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2E5FD288C4CA600FD4352 /* DropboxLoginViewController.swift */; };
 		F7A2E605288C5A6700FD4352 /* ErrorWithMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2E604288C5A6700FD4352 /* ErrorWithMessage.swift */; };
@@ -45,11 +46,10 @@
 		79DFB892DCF64DF4FB4A21C9 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		CE980746F09D51BF3DC9D497 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F71E504428EE098E0053EBE5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePhotosView.swift; sourceTree = "<group>"; };
-		F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPhotosView.swift; sourceTree = "<group>"; };
+		F72CC03C28A198130073D4D2 /* PhotoGalleryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryGridView.swift; sourceTree = "<group>"; };
 		F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
-		F7558CB528B041F600A86BF3 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePhotoView.swift; sourceTree = "<group>"; };
 		F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
 		F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		F758D35028A69A9800027D5F /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -60,6 +60,8 @@
 		F758D35E28A6B04B00027D5F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersViewModel.swift; sourceTree = "<group>"; };
 		F761BFDD287B4FF70005C764 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F7821BA528F32152006AF988 /* HostingServiceAuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingServiceAuthFlow.swift; sourceTree = "<group>"; };
+		F7821BA728F327BF006AF988 /* HostingServiceScopesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingServiceScopesListView.swift; sourceTree = "<group>"; };
 		F794AC53288E22FC00680F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7A2E5FD288C4CA600FD4352 /* DropboxLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxLoginViewController.swift; sourceTree = "<group>"; };
 		F7A2E5FF288C4CCA00FD4352 /* ObjectiveDropboxOfficial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectiveDropboxOfficial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,9 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */,
 				F758D34E28A5C1A300027D5F /* NukeUI in Frameworks */,
 				1437D36C982673CC473FEE86 /* Pods_iosApp.framework in Frameworks */,
-				F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,14 +168,13 @@
 		F758D35228A69AFC00027D5F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F7A6D37728F47A6C00BF02E8 /* SwiftUI+UIKit */,
+				F7A6D37628F47A1600BF02E8 /* Widget */,
 				7555FF82242A565900829871 /* ContentView.swift */,
-				F72CC03C28A198130073D4D2 /* DevicePhotosView.swift */,
-				F72CC03E28A1986F0073D4D2 /* CloudPhotosView.swift */,
-				F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */,
-				F758D35728A69BF700027D5F /* CTAButtonView.swift */,
-				F7558CB528B041F600A86BF3 /* PhotoView.swift */,
-				F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */,
-				F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */,
+				F72CC03C28A198130073D4D2 /* PhotoGalleryGridView.swift */,
+				F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */,
+				F7821BA528F32152006AF988 /* HostingServiceAuthFlow.swift */,
+				F7821BA728F327BF006AF988 /* HostingServiceScopesListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +210,24 @@
 				F7A2E604288C5A6700FD4352 /* ErrorWithMessage.swift */,
 			);
 			path = Type;
+			sourceTree = "<group>";
+		};
+		F7A6D37628F47A1600BF02E8 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */,
+				F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */,
+				F758D35728A69BF700027D5F /* CTAButtonView.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		F7A6D37728F47A6C00BF02E8 /* SwiftUI+UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */,
+			);
+			path = "SwiftUI+UIKit";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,24 +352,25 @@
 			files = (
 				F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */,
 				F794AC54288E22FC00680F49 /* AppDelegate.swift in Sources */,
-				F7558CB628B041F600A86BF3 /* PhotoView.swift in Sources */,
+				F7558CB628B041F600A86BF3 /* SinglePhotoView.swift in Sources */,
 				F758D35428A69B4200027D5F /* PhotoExtension.swift in Sources */,
 				F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */,
 				F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */,
+				F7821BA828F327BF006AF988 /* HostingServiceScopesListView.swift in Sources */,
 				F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				F72CC03D28A198130073D4D2 /* DevicePhotosView.swift in Sources */,
+				F72CC03D28A198130073D4D2 /* PhotoGalleryGridView.swift in Sources */,
 				F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */,
 				F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */,
 				F7A2E605288C5A6700FD4352 /* ErrorWithMessage.swift in Sources */,
 				F7A2E5FE288C4CA600FD4352 /* DropboxLoginViewController.swift in Sources */,
 				F71E504528EE098E0053EBE5 /* Color.swift in Sources */,
 				F758D35828A69BF700027D5F /* CTAButtonView.swift in Sources */,
+				F7821BA628F32152006AF988 /* HostingServiceAuthFlow.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				F72CC04828A5C0040073D4D2 /* RemoteImageView.swift in Sources */,
 				F758D35A28A6A4CE00027D5F /* ButtonExtension.swift in Sources */,
 				F758D35128A69A9800027D5F /* ImageExtension.swift in Sources */,
-				F72CC03F28A1986F0073D4D2 /* CloudPhotosView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

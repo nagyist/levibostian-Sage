@@ -12,45 +12,48 @@ import platform.UIKit.UIApplication
 import platform.UIKit.UIViewController
 import kotlin.coroutines.resume
 import earth.levi.sage.kotlin_inline.Result
+import earth.levi.sage.type.HostingServicePermissionScope
 import platform.Foundation.NSOperationQueue
 import platform.Foundation.NSURL
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_queue_create
 import kotlin.coroutines.suspendCoroutine
+import kotlin.native.ref.WeakReference
 
+// this interface contains functions that are unique only to iOS.
 interface iOSHostingService: HostingService {
+    /**
+     * Call on app startup
+     */
     fun initialize()
-    fun login(application: UIApplication, viewController: UIViewController)
+
+    fun authorize(scopes: List<HostingServicePermissionScope>, application: UIApplication, dropboxLoginViewController: UIViewController)
+    /**
+     * Call in your app's deep link handler
+     */
     fun handleUrlOpened(url: NSURL): Boolean
 }
 
 class DropboxHostingService(private val logger: Logger): iOSHostingService {
 
     override fun initialize() {
-        // sdk throws exception if setting up app key 2+ times
+        // sdk throws exception if setting up app key 2+ times. Only do it once.
         if (DBClientsManager.appKey() == null) DBClientsManager.setupWithAppKey(Secrets.dropboxAppKey)
     }
 
-    override fun login(application: UIApplication, viewController: UIViewController) {
-        // The scope's your app will need from Dropbox
-        // Read more about Scopes here: https://developers.dropbox.com/oauth-guide#dropbox-api-permissions
-        val scopes = listOf(
-            "account_info.read",
-            "files.metadata.read",
-            "files.metadata.write",
-            "files.content.read",
-            "files.content.write",
-            "sharing.read",
-            "sharing.write"
-        )
-
-        val scopeRequest = DBScopeRequest(DBScopeTypeUser, scopes, includeGrantedScopes = true)
+    override fun authorize(
+        scopes: List<HostingServicePermissionScope>,
+        application: UIApplication,
+        dropboxLoginViewController: UIViewController
+    ) {
+        val scopeRequest = DBScopeRequest(DBScopeTypeUser, getDropboxScopesFromGenericScopes(scopes), includeGrantedScopes = true)
 
         DBClientsManager.authorizeFromControllerV2(
             sharedApplication = application,
-            controller = viewController,
+            controller = dropboxLoginViewController,
             loadingStatusDelegate = null,
             openURL = { url ->
+                // the dropbox SDK asks you to open URLs how you wish.
                 url?.let { application.openURL(it) }
             },
             scopeRequest = scopeRequest
@@ -146,6 +149,27 @@ class DropboxHostingService(private val logger: Logger): iOSHostingService {
                             fullSyncCompleted = true
                         )
                     )
+                )
+            }
+        }
+    }
+
+    private fun getDropboxScopesFromGenericScopes(scopes: List<HostingServicePermissionScope>): List<String> {
+        // The scope's your app will need from Dropbox
+        // Read more about Scopes here: https://developers.dropbox.com/oauth-guide#dropbox-api-permissions
+        return scopes.flatMap { genericScope ->
+            when (genericScope) {
+                HostingServicePermissionScope.READ_FILES -> listOf(
+                    "files.metadata.read",
+                    "files.content.read",
+                )
+                HostingServicePermissionScope.WRITE_FILES -> listOf(
+                    "files.metadata.write",
+                    "files.content.write"
+                )
+                HostingServicePermissionScope.SHARE_FILES -> listOf(
+                    "sharing.read",
+                    "sharing.write"
                 )
             }
         }
