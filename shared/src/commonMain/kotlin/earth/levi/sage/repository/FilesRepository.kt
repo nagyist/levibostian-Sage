@@ -17,6 +17,29 @@ interface FilesRepository {
     suspend fun updateFolderContentsFromRemote(path: String): Result<GetFolderContentsResult>
     suspend fun importLocalPhoto(localPhoto: LocalPhoto)
     suspend fun importLocalPhotos(localPhotos: List<LocalPhoto>)
+
+    /**
+     * Perform a sync between local device and hosting service.
+     */
+    suspend fun sync(): SyncResult
+
+    /**
+     * Result from performing [sync].
+     */
+    sealed class SyncResult {
+        /// Sync has not yet started. No state.
+        object None: SyncResult()
+        /// Cannot reach the hosting service.
+        object ConnectionError: SyncResult()
+        /// User of app needs to tell us what directory in dropbox houses photos.
+        object NoRootDirectorySetPhotos: SyncResult()
+        /// Need to login for first time or re-login to hosting service. Got this error from a 401 from Dropbox.
+        object Unauthorized: SyncResult()
+        /// Not enough granted permissions to perform action.
+        object NeedsPermissions: SyncResult()
+        /// Success! But, the sync might have failed sometime in the process.
+        data class Success(val fullSyncCompleted: Boolean): SyncResult()
+    }
 }
 
 /**
@@ -27,6 +50,10 @@ interface FilesRepository {
 class FilesRepositoryImpl(
     private val db: SageDatabase,
     private val hostingService: HostingService): FilesRepository {
+
+    override suspend fun sync(): FilesRepository.SyncResult {
+        return FilesRepository.SyncResult.Unauthorized
+    }
 
     override fun observeFoldersAtPath(path: String): Flow<List<Folder>> {
         return db.folderQueries.selectAll().asFlow().mapToList()

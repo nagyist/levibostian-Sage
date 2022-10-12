@@ -26,7 +26,7 @@
 		F758D35A28A6A4CE00027D5F /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35928A6A4CE00027D5F /* ButtonExtension.swift */; };
 		F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35C28A6AF4000027D5F /* SwiftUIDebugUtils.swift */; };
 		F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758D35E28A6B04B00027D5F /* ColorExtension.swift */; };
-		F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */; };
+		F761BFDC287B4DDC0005C764 /* CloudPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761BFDB287B4DDC0005C764 /* CloudPhotosViewModel.swift */; };
 		F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F761BFDD287B4FF70005C764 /* libsqlite3.tbd */; };
 		F7821BA628F32152006AF988 /* HostingServiceAuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7821BA528F32152006AF988 /* HostingServiceAuthFlow.swift */; };
 		F7821BA828F327BF006AF988 /* HostingServiceScopesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7821BA728F327BF006AF988 /* HostingServiceScopesListView.swift */; };
@@ -58,7 +58,7 @@
 		F758D35928A6A4CE00027D5F /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		F758D35C28A6AF4000027D5F /* SwiftUIDebugUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDebugUtils.swift; sourceTree = "<group>"; };
 		F758D35E28A6B04B00027D5F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersViewModel.swift; sourceTree = "<group>"; };
+		F761BFDB287B4DDC0005C764 /* CloudPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPhotosViewModel.swift; sourceTree = "<group>"; };
 		F761BFDD287B4FF70005C764 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F7821BA528F32152006AF988 /* HostingServiceAuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingServiceAuthFlow.swift; sourceTree = "<group>"; };
 		F7821BA728F327BF006AF988 /* HostingServiceScopesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingServiceScopesListView.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		F761BFDA287B4DB80005C764 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F761BFDB287B4DDC0005C764 /* FoldersViewModel.swift */,
+				F761BFDB287B4DDC0005C764 /* CloudPhotosViewModel.swift */,
 				F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */,
 			);
 			path = ViewModel;
@@ -354,7 +354,7 @@
 				F794AC54288E22FC00680F49 /* AppDelegate.swift in Sources */,
 				F7558CB628B041F600A86BF3 /* SinglePhotoView.swift in Sources */,
 				F758D35428A69B4200027D5F /* PhotoExtension.swift in Sources */,
-				F761BFDC287B4DDC0005C764 /* FoldersViewModel.swift in Sources */,
+				F761BFDC287B4DDC0005C764 /* CloudPhotosViewModel.swift in Sources */,
 				F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */,
 				F7821BA828F327BF006AF988 /* HostingServiceScopesListView.swift in Sources */,
 				F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */,

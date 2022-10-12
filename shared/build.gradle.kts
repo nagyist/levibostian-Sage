@@ -82,6 +82,7 @@ kotlin {
                 implementation("com.dropbox.core:dropbox-core-sdk:5.2.0")
                 implementation(Deps.SqlDelight.androidDriver)
                 implementation(Deps.AndroidX.core) // for checking runtime permissions
+                implementation(Deps.AndroidX.viewModel) // creating an adapter between shared ViewModels and an Android specific ViewModel
             }
         }
         val androidTest by getting

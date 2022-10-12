@@ -2,13 +2,13 @@ import Foundation
 import Combine
 import shared
 
-@MainActor
-class FoldersViewModel: ObservableObject {
+class CloudPhotosViewModel: ObservableObject {
     @Published var folders = [Folder]()
     @Published var needsAuthorization: Bool = false
     
     private var pollFoldersTask: Task<(), Never>? = nil
     private var updateFolderContentsTask: Task<(), Never>? = nil
+    private var syncTask: Task<(), Never>? = nil
     
     private let repository: FilesRepository
     
@@ -25,9 +25,16 @@ class FoldersViewModel: ObservableObject {
                 print("Failed with error: \(error)")
             }
         }
+
+        
+        
+        // TODO: start to perform sync.
+        // TODO: populate properties for needs auth or needs to select root folder for sync.
     }
     
-    func updateFolderContentsFromRemote(path: String) {        
+    func updateFolderContentsFromRemote(path: String) {
+        updateFolderContentsTask?.cancel()
+        
         updateFolderContentsTask = Task {
             let result = await convertToSwiftResult(block: {
                 try await repository.updateFolderContentsFromRemote(path: path)
@@ -36,6 +43,25 @@ class FoldersViewModel: ObservableObject {
             if case let .success(data) = result, case is GetFolderContentsResult.Unauthorized = data {
                 needsAuthorization = true
             }
+        }
+    }
+    
+    func sync() {
+        syncTask?.cancel()
+        
+        syncTask = Task {
+            do {
+                let result = try await repository.sync()
+                
+                if result is FilesRepositorySyncResult.Unauthorized {
+                    
+                }
+                
+//                switch (result) {
+//                case FilesRepositorySyncResult.Unauthorized: break
+//
+//                }
+            } catch {}
         }
     }
     

@@ -1,7 +1,8 @@
 object Versions {
     const val sqlDelight = "1.5.3"
     const val androidJetpackNavigation = "2.5.1"
-    const val androidXCore = "1.8.0"
+    const val androidXCore = "1.9.0"
+    const val androidXViewModel = "2.5.1"
 }
 
 object Deps {
@@ -22,6 +23,7 @@ object Deps {
 
     object AndroidX {
         const val core = "androidx.core:core-ktx:${Versions.androidXCore}"
+        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidXViewModel}"
     }
 
     object AndroidJetpackNavigation {

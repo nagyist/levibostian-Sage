@@ -11,6 +11,8 @@ import earth.levi.sage.util.Logger
 import earth.levi.sage.util.PermissionUtil
 import earth.levi.sage.util.SamplePhotosUtil
 import earth.levi.sage.util.SamplePhotosUtilImp
+import earth.levi.sage.viewmodel.FilesViewModel
+import kotlin.math.log
 
 object DiGraph
 
@@ -35,3 +37,6 @@ expect val DiGraph.permissionUtil: PermissionUtil
 
 val DiGraph.samplePhotosUtil: SamplePhotosUtil
     get() = SamplePhotosUtilImp()
+
+val DiGraph.filesViewModel: FilesViewModel
+    get() = FilesViewModel(filesRepository, logger)
