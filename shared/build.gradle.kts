@@ -7,13 +7,12 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("com.squareup.sqldelight")
-    id("com.rickclephas.kmp.nativecoroutines") version "0.12.6"
 }
 
 version = "1.0"
 
 android {
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         // dropbox SDK requires inserting the app key in manifest file.
@@ -112,11 +111,12 @@ kotlin {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    namespace = "earth.levi.sage"
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 33
     }
 }
 

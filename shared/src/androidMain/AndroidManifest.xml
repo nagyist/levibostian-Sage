@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="earth.levi.sage">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- required permission to view images *that other apps have created* -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

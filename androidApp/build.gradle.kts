@@ -32,6 +32,7 @@ android {
         // enable View Binding
         viewBinding = true
     }
+    namespace = "earth.levi.sage.android"
 }
 
 dependencies {
