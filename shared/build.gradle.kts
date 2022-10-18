@@ -45,7 +45,9 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
-            isStatic = false // fixes Xcode SwiftUI preview: https://github.com/cashapp/sqldelight/issues/2512#issuecomment-937699879
+            // Set to false to fix Xcode SwiftUI preview: https://github.com/cashapp/sqldelight/issues/2512#issuecomment-937699879
+            // However, false made the dropbox objective-c SDK no longer compile. So, keeping at static to keep project compiling successfully.
+            isStatic = true
         }
 
         /**
