@@ -7,6 +7,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("com.squareup.sqldelight")
+    id("com.rickclephas.kmp.nativecoroutines") version Versions.kmpNativeCoroutines
 }
 
 version = "1.0"

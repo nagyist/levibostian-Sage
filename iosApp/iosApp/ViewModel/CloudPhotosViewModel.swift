@@ -14,22 +14,8 @@ class CloudPhotosViewModel: ObservableObject {
     
     init(repository: FilesRepository = DiGraph.shared.filesRepository) {
         self.repository = repository
-                
-        pollFoldersTask = Task {
-            do {
-//                let stream = asyncStream(for: repository.observeFoldersAtPathNative(path: "/Photos"))
-//                for try await data in stream {
-//                    self.folders = data
-//                }
-            } catch {
-                print("Failed with error: \(error)")
-            }
-        }
 
-        
-        
-        // TODO: start to perform sync.
-        // TODO: populate properties for needs auth or needs to select root folder for sync.
+        sync()
     }
     
     func updateFolderContentsFromRemote(path: String) {
@@ -50,18 +36,17 @@ class CloudPhotosViewModel: ObservableObject {
         syncTask?.cancel()
         
         syncTask = Task {
-            do {
-                let result = try await repository.sync()
+            let result = try! await repository.sync()
                 
-                if result is FilesRepositorySyncResult.Unauthorized {
-                    
-                }
-                
-//                switch (result) {
-//                case FilesRepositorySyncResult.Unauthorized: break
-//
-//                }
-            } catch {}
+            switch (result.toSwiftEnum()) {
+                case .None: break
+                case .ConnectionError: break
+                case .NoRootDirectorySetPhotos: break
+                case .Unauthorized:
+                    self.needsAuthorization = true
+                case .NeedsPermission: break
+                case .Success(fullSyncCompleted: let fullSyncCompleted): break
+            }
         }
     }
     
@@ -88,4 +73,35 @@ class CloudPhotosViewModel: ObservableObject {
         }
     }
     
+}
+
+enum SyncResult: Equatable {
+    case None
+    case ConnectionError
+    case NoRootDirectorySetPhotos
+    case Unauthorized
+    case NeedsPermission
+    case Success(fullSyncCompleted: Bool)
+}
+
+extension shared.FilesRepositorySyncResult {
+    func toSwiftEnum() -> SyncResult {
+        var result: SyncResult = .None
+        
+        self.fold {
+            result = SyncResult.ConnectionError
+        } needsPermission: {
+            result = SyncResult.NeedsPermission
+        } noRootDirectorySetPhotos: {
+            result = SyncResult.NoRootDirectorySetPhotos
+        } none: {
+            result = SyncResult.None
+        } success: { fullSyncCompleted in
+            result = SyncResult.Success(fullSyncCompleted: fullSyncCompleted.boolValue)
+        } unauthorized: {
+            result = SyncResult.Unauthorized
+        }
+        
+        return result
+    }
 }

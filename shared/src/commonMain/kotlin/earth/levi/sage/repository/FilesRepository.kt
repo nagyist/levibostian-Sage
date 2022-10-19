@@ -9,8 +9,10 @@ import earth.levi.sage.kotlin_inline.Result
 import earth.levi.sage.type.LocalPhoto
 import earth.levi.sage.type.result.GetFolderContentsResult
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import kotlin.time.Duration
 
 interface FilesRepository {
     fun observeFoldersAtPath(path: String): Flow<List<Folder>>
@@ -39,6 +41,24 @@ interface FilesRepository {
         object NeedsPermissions: SyncResult()
         /// Success! But, the sync might have failed sometime in the process.
         data class Success(val fullSyncCompleted: Boolean): SyncResult()
+
+        fun fold(
+            connectionError: () -> Unit,
+            needsPermission: () -> Unit,
+            noRootDirectorySetPhotos: () -> Unit,
+            none: () -> Unit,
+            success: (fullSyncCompleted: Boolean) -> Unit,
+            unauthorized: () -> Unit
+        ) {
+            when (this) {
+                ConnectionError -> connectionError()
+                NeedsPermissions -> needsPermission()
+                NoRootDirectorySetPhotos -> noRootDirectorySetPhotos()
+                None -> none()
+                is Success -> success(fullSyncCompleted)
+                Unauthorized -> unauthorized()
+            }
+        }
     }
 }
 
@@ -52,6 +72,8 @@ class FilesRepositoryImpl(
     private val hostingService: HostingService): FilesRepository {
 
     override suspend fun sync(): FilesRepository.SyncResult {
+        delay(Duration.parse("3s")) // to emulate network
+
         return FilesRepository.SyncResult.Unauthorized
     }
 

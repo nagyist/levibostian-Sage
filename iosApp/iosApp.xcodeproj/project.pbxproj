@@ -16,6 +16,10 @@
 		F72CC03D28A198130073D4D2 /* PhotoGalleryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC03C28A198130073D4D2 /* PhotoGalleryGridView.swift */; };
 		F72CC04328A199FC0073D4D2 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */; };
 		F72CC04828A5C0040073D4D2 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */; };
+		F72E287328FF2018001F4527 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = F72E287228FF2018001F4527 /* KMPNativeCoroutinesCombine */; };
+		F72E287528FF2018001F4527 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = F72E287428FF2018001F4527 /* KMPNativeCoroutinesCore */; };
+		F72E287828FF204B001F4527 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E287728FF204B001F4527 /* Flow.swift */; };
+		F72E287A2900B863001F4527 /* CombineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E28792900B863001F4527 /* CombineExtension.swift */; };
 		F7558CB628B041F600A86BF3 /* SinglePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */; };
 		F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */; };
 		F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */; };
@@ -49,6 +53,8 @@
 		F72CC03C28A198130073D4D2 /* PhotoGalleryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryGridView.swift; sourceTree = "<group>"; };
 		F72CC04228A199FC0073D4D2 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		F72E287728FF204B001F4527 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		F72E28792900B863001F4527 /* CombineExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtension.swift; sourceTree = "<group>"; };
 		F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePhotoView.swift; sourceTree = "<group>"; };
 		F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
 		F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
@@ -74,6 +80,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F761BFDE287B500F0005C764 /* libsqlite3.tbd in Frameworks */,
+				F72E287528FF2018001F4527 /* KMPNativeCoroutinesCore in Frameworks */,
+				F72E287328FF2018001F4527 /* KMPNativeCoroutinesCombine in Frameworks */,
 				F758D34E28A5C1A300027D5F /* NukeUI in Frameworks */,
 				1437D36C982673CC473FEE86 /* Pods_iosApp.framework in Frameworks */,
 			);
@@ -111,6 +119,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				F72E287628FF203F001F4527 /* Kotlin+Swift */,
 				F71E504328EE09800053EBE5 /* Assets */,
 				F758D35B28A6AF3100027D5F /* Util */,
 				F758D35228A69AFC00027D5F /* View */,
@@ -154,6 +163,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		F72E287628FF203F001F4527 /* Kotlin+Swift */ = {
+			isa = PBXGroup;
+			children = (
+				F72E287728FF204B001F4527 /* Flow.swift */,
+			);
+			path = "Kotlin+Swift";
+			sourceTree = "<group>";
+		};
 		F758D34F28A69A8C00027D5F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +178,7 @@
 				F758D35328A69B4200027D5F /* PhotoExtension.swift */,
 				F758D35928A6A4CE00027D5F /* ButtonExtension.swift */,
 				F758D35E28A6B04B00027D5F /* ColorExtension.swift */,
+				F72E28792900B863001F4527 /* CombineExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -250,6 +268,8 @@
 			name = iosApp;
 			packageProductDependencies = (
 				F758D34D28A5C1A300027D5F /* NukeUI */,
+				F72E287228FF2018001F4527 /* KMPNativeCoroutinesCombine */,
+				F72E287428FF2018001F4527 /* KMPNativeCoroutinesCore */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
@@ -281,6 +301,7 @@
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
 				F758D34C28A5C1A300027D5F /* XCRemoteSwiftPackageReference "Nuke" */,
+				F72E287128FF2018001F4527 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -357,6 +378,8 @@
 				F761BFDC287B4DDC0005C764 /* CloudPhotosViewModel.swift in Sources */,
 				F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */,
 				F7821BA828F327BF006AF988 /* HostingServiceScopesListView.swift in Sources */,
+				F72E287828FF204B001F4527 /* Flow.swift in Sources */,
+				F72E287A2900B863001F4527 /* CombineExtension.swift in Sources */,
 				F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				F72CC03D28A198130073D4D2 /* PhotoGalleryGridView.swift in Sources */,
@@ -559,6 +582,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F72E287128FF2018001F4527 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.13.1;
+			};
+		};
 		F758D34C28A5C1A300027D5F /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
@@ -570,6 +601,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F72E287228FF2018001F4527 /* KMPNativeCoroutinesCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72E287128FF2018001F4527 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCombine;
+		};
+		F72E287428FF2018001F4527 /* KMPNativeCoroutinesCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72E287128FF2018001F4527 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCore;
+		};
 		F758D34D28A5C1A300027D5F /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F758D34C28A5C1A300027D5F /* XCRemoteSwiftPackageReference "Nuke" */;

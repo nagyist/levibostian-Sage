@@ -10,9 +10,12 @@ import Foundation
 import SwiftUI
 import shared
 import Photos
+import Combine
 
 struct PhotoGalleryGridView: View {
-    @StateObject var viewModel = PhotosViewModel()
+//    @StateObject var viewModel = PhotosViewModel()
+    @StateObject var newViewModel = ViewModel()
+    
     @State var gridColumns = [GridItem(), GridItem(), GridItem()]
     private let gridItemSpacing: Double = 10
     @State private var isShowingHostingServiceAuthFlow = false
@@ -23,28 +26,30 @@ struct PhotoGalleryGridView: View {
             NavigationView {
                 VStack {
                     ScrollView {
-                        LazyVGrid(columns: gridColumns, spacing: gridItemSpacing) {
-                            ForEach(viewModel.deviceImages) { photo in
-                                NavigationLink(destination: SinglePhotoView(photo: photo)) {
-                                    PhotoImageView(photo: photo, width: (Double(geoReader.size.width) / Double(gridColumns.count)) - gridItemSpacing / 2)
-                                }
-                            }
-                        }
+//                        LazyVGrid(columns: gridColumns, spacing: gridItemSpacing) {
+//                            ForEach(viewModel.deviceImages) { photo in
+//                                NavigationLink(destination: SinglePhotoView(photo: photo)) {
+//                                    PhotoImageView(photo: photo, width: (Double(geoReader.size.width) / Double(gridColumns.count)) - gridItemSpacing / 2)
+//                                }
+//                            }
+//                        }
                     }.onAppear {
-                        if (viewModel.needPermissionToAccessLocalPhotos) {
-                            viewModel.fetchSamplePhotos()
-                        } else {
-                            viewModel.fetchLocalPhotos()
-                        }
+//                        if (viewModel.needPermissionToAccessLocalPhotos) {
+//                            viewModel.fetchSamplePhotos()
+//                        } else {
+//                            viewModel.fetchLocalPhotos()
+//                        }
+                        
+                        newViewModel.sync()
                     }.navigationBarTitle("Gallery", displayMode: .large)
                     
-                    if (viewModel.needPermissionToAccessLocalPhotos) {
+                    if (newViewModel.syncStatus == SyncResult.Unauthorized) {
                         NavigationLink(
                             destination:
                                 HostingServiceAuthFlow(scopesToAskFor: [HostingServicePermissionScope.readFiles])
                                 .environmentObject(authFlowResult),
                             isActive: $authFlowResult.isDoneWithAuthFlow) {
-                            CTAButtonView(buttonText: viewModel.localPhotosPermissionCtaButtonText, descriptionText: viewModel.localPhotosPermissionCtaDescriptionText) {
+                                CTAButtonView(buttonText: "button textd", descriptionText: "desc") { //viewModel.localPhotosPermissionCtaButtonText, descriptionText: viewModel.localPhotosPermissionCtaDescriptionText) {
                                     authFlowResult.isDoneWithAuthFlow = true
                             }
                         }
@@ -73,24 +78,29 @@ struct PhotoGalleryGridView: View {
 // it publishes a Flow because the status of sync can change a lot.
 extension PhotoGalleryGridView {
     class ViewModel: ObservableObject {
-        @Published private(set) var needsHostingServiceLogin = false
-        @Published private(set) var needsSetRootFolderHostingService = false
-    //        @Published private(set) var syncStatus
+        @Published private(set) var syncStatus: SyncResult? = nil
         
-        private var syncTask: Task<(), Never>? = nil
+        private let filesViewModel: FilesViewModel
         
-//        private let filesViewModel: FilesV
+        private var cancellables = [AnyCancellable]()
         
-        func sync() {
-            syncTask?.cancel()
+        init(filesViewModel: FilesViewModel = DiGraph.shared.filesViewModel) {
+            self.filesViewModel = filesViewModel
             
-            syncTask = Task {
-//                do {
-//                    try await
-//                }
-            }
+            startObservingSyncState()
         }
         
+        private func startObservingSyncState() {
+            createPublisher(for: filesViewModel.syncStateNative)
+                .sinkMainReceive { value in
+                    self.syncStatus = value.toSwiftEnum()
+                }.store(in: &cancellables)
+        }
+        
+        // called from UI when it's ready
+        func sync() {
+            filesViewModel.startSync()
+        }
     }
 }
 

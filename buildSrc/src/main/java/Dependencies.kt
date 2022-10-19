@@ -2,6 +2,7 @@ object Versions {
     const val sqlDelight = "1.5.4"
     const val androidXCore = "1.9.0"
     const val androidXViewModel = "2.5.1"
+    const val kmpNativeCoroutines = "0.13.1"
 }
 
 object Deps {
