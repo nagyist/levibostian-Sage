@@ -43,42 +43,20 @@ struct PhotoGalleryGridView: View {
                         newViewModel.sync()
                     }.navigationBarTitle("Gallery", displayMode: .large)
                     
-                    if (newViewModel.syncStatus.unauthorized) {
-                        NavigationLink(
-                            destination:
-                                HostingServiceAuthFlow(scopesToAskFor: [HostingServicePermissionScope.readFiles])
-                                .environmentObject(authFlowResult),
-                            isActive: $authFlowResult.isDoneWithAuthFlow) {
-                                CTAButtonView(buttonText: "button textd", descriptionText: "desc") { //viewModel.localPhotosPermissionCtaButtonText, descriptionText: viewModel.localPhotosPermissionCtaDescriptionText) {
-                                    authFlowResult.isDoneWithAuthFlow = true
-                            }
-                        }
-                    }
+                    HostingServiceCTA(
+                        ctaDetails: HostingServiceCTA.CTADetails(unauthorizedButtonText: "login!", unauthorizedDescription: "ooops you need to login"),
+                        syncStatus: $newViewModel.syncStatus
+                    )
+                        .environmentObject(authFlowResult)
                 }
             }
         }
     }
 }
 
-// TODO: trying to create a swift ViewModel that creates @Published from
-// shared ViewModel in common.
-// ultimately, I am trying to crete a sync() functdion that kicks off an async task
-// that publishes status updates to a Flow about the status of the sync and that
-// Flow gets parsed into these published below.
-// then, I'll be able to use the properties to populate views in the UI.
-//
-// the UI screen when it loads up is meant to call sync() and if any issues or whatever
-// display UI views.
-//
-// gallery screen opens up, needs to perform a sync() with dropbox. or at least try even if
-// never logged in before. we can use that status as an opportunity to ask to login forf first time.
-// so, we need to call sync() on a swift viewmodel which then gives us Published so we can
-// dynamically alter a view for us.
-// inm teh view model, sync() triggers a common viewmodel code to do the sync on all platforms.
-// it publishes a Flow because the status of sync can change a lot.
 extension PhotoGalleryGridView {
     class ViewModel: ObservableObject {
-        @Published private(set) var syncStatus = FilesRepositorySyncResult.companion.none()
+        @Published var syncStatus = FilesRepositorySyncResult.companion.none()
         
         private let filesViewModel: FilesViewModel
         
