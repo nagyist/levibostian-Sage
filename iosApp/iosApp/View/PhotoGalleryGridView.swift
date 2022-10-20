@@ -43,7 +43,7 @@ struct PhotoGalleryGridView: View {
                         newViewModel.sync()
                     }.navigationBarTitle("Gallery", displayMode: .large)
                     
-                    if (newViewModel.syncStatus == SyncResult.Unauthorized) {
+                    if (newViewModel.syncStatus.unauthorized) {
                         NavigationLink(
                             destination:
                                 HostingServiceAuthFlow(scopesToAskFor: [HostingServicePermissionScope.readFiles])
@@ -78,7 +78,7 @@ struct PhotoGalleryGridView: View {
 // it publishes a Flow because the status of sync can change a lot.
 extension PhotoGalleryGridView {
     class ViewModel: ObservableObject {
-        @Published private(set) var syncStatus: SyncResult? = nil
+        @Published private(set) var syncStatus = FilesRepositorySyncResult.companion.none()
         
         private let filesViewModel: FilesViewModel
         
@@ -93,7 +93,7 @@ extension PhotoGalleryGridView {
         private func startObservingSyncState() {
             createPublisher(for: filesViewModel.syncStateNative)
                 .sinkMainReceive { value in
-                    self.syncStatus = value.toSwiftEnum()
+                    self.syncStatus = value
                 }.store(in: &cancellables)
         }
         

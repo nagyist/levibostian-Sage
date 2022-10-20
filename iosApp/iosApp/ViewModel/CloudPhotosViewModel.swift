@@ -32,24 +32,6 @@ class CloudPhotosViewModel: ObservableObject {
         }
     }
     
-    func sync() {
-        syncTask?.cancel()
-        
-        syncTask = Task {
-            let result = try! await repository.sync()
-                
-            switch (result.toSwiftEnum()) {
-                case .None: break
-                case .ConnectionError: break
-                case .NoRootDirectorySetPhotos: break
-                case .Unauthorized:
-                    self.needsAuthorization = true
-                case .NeedsPermission: break
-                case .Success(fullSyncCompleted: let fullSyncCompleted): break
-            }
-        }
-    }
-    
     func cancel() {
         updateFolderContentsTask?.cancel()
     }
@@ -73,35 +55,4 @@ class CloudPhotosViewModel: ObservableObject {
         }
     }
     
-}
-
-enum SyncResult: Equatable {
-    case None
-    case ConnectionError
-    case NoRootDirectorySetPhotos
-    case Unauthorized
-    case NeedsPermission
-    case Success(fullSyncCompleted: Bool)
-}
-
-extension shared.FilesRepositorySyncResult {
-    func toSwiftEnum() -> SyncResult {
-        var result: SyncResult = .None
-        
-        self.fold {
-            result = SyncResult.ConnectionError
-        } needsPermission: {
-            result = SyncResult.NeedsPermission
-        } noRootDirectorySetPhotos: {
-            result = SyncResult.NoRootDirectorySetPhotos
-        } none: {
-            result = SyncResult.None
-        } success: { fullSyncCompleted in
-            result = SyncResult.Success(fullSyncCompleted: fullSyncCompleted.boolValue)
-        } unauthorized: {
-            result = SyncResult.Unauthorized
-        }
-        
-        return result
-    }
 }

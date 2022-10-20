@@ -28,36 +28,21 @@ interface FilesRepository {
     /**
      * Result from performing [sync].
      */
-    sealed class SyncResult {
-        /// Sync has not yet started. No state.
-        object None: SyncResult()
-        /// Cannot reach the hosting service.
-        object ConnectionError: SyncResult()
-        /// User of app needs to tell us what directory in dropbox houses photos.
-        object NoRootDirectorySetPhotos: SyncResult()
-        /// Need to login for first time or re-login to hosting service. Got this error from a 401 from Dropbox.
-        object Unauthorized: SyncResult()
-        /// Not enough granted permissions to perform action.
-        object NeedsPermissions: SyncResult()
-        /// Success! But, the sync might have failed sometime in the process.
-        data class Success(val fullSyncCompleted: Boolean): SyncResult()
-
-        fun fold(
-            connectionError: () -> Unit,
-            needsPermission: () -> Unit,
-            noRootDirectorySetPhotos: () -> Unit,
-            none: () -> Unit,
-            success: (fullSyncCompleted: Boolean) -> Unit,
-            unauthorized: () -> Unit
-        ) {
-            when (this) {
-                ConnectionError -> connectionError()
-                NeedsPermissions -> needsPermission()
-                NoRootDirectorySetPhotos -> noRootDirectorySetPhotos()
-                None -> none()
-                is Success -> success(fullSyncCompleted)
-                Unauthorized -> unauthorized()
-            }
+    data class SyncResult private constructor(
+        val fullSyncCompleted: Boolean = false,
+        val unauthorized: Boolean = false,
+        val noRootDirectorySetPhotos: Boolean = false,
+        val needsPermission: Boolean = false
+    ) {
+        companion object {
+            /// Sync has not yet started. No state.
+            fun none() = SyncResult()
+            /// Success! But, the sync might have failed sometime in the process.
+            fun success(fullSyncCompleted: Boolean) = SyncResult(fullSyncCompleted = fullSyncCompleted)
+            /// Need to login for first time or re-login to hosting service. Got this error from a 401 from Dropbox.
+            fun unauthorized() = SyncResult(unauthorized = true)
+            /// User of app needs to tell us what directory in dropbox houses photos.
+            fun noRootDirectorySetPhotos() = SyncResult(noRootDirectorySetPhotos = true)
         }
     }
 }
@@ -74,7 +59,7 @@ class FilesRepositoryImpl(
     override suspend fun sync(): FilesRepository.SyncResult {
         delay(Duration.parse("3s")) // to emulate network
 
-        return FilesRepository.SyncResult.Unauthorized
+        return FilesRepository.SyncResult.unauthorized()
     }
 
     override fun observeFoldersAtPath(path: String): Flow<List<Folder>> {

@@ -12,7 +12,7 @@ class FilesViewModel(
     private val logger: Logger
 ): ViewModel() {
 
-    private val mutableSyncState = MutableStateFlow<FilesRepository.SyncResult>(FilesRepository.SyncResult.None)
+    private val mutableSyncState = MutableStateFlow<FilesRepository.SyncResult>(FilesRepository.SyncResult.none())
     val syncState: StateFlow<FilesRepository.SyncResult> = mutableSyncState
 
     fun startSync() {
