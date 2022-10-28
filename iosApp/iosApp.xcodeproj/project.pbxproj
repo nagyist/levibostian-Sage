@@ -21,6 +21,8 @@
 		F72E287828FF204B001F4527 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E287728FF204B001F4527 /* Flow.swift */; };
 		F72E287A2900B863001F4527 /* CombineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E28792900B863001F4527 /* CombineExtension.swift */; };
 		F72E28812901F406001F4527 /* HostingServiceCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E28802901F406001F4527 /* HostingServiceCTA.swift */; };
+		F72E288329094777001F4527 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E288229094777001F4527 /* RoundedCornerButton.swift */; };
+		F72E288529094F7D001F4527 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E288429094F7D001F4527 /* TextExtensions.swift */; };
 		F7558CB628B041F600A86BF3 /* SinglePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */; };
 		F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */; };
 		F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */; };
@@ -57,6 +59,8 @@
 		F72E287728FF204B001F4527 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		F72E28792900B863001F4527 /* CombineExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtension.swift; sourceTree = "<group>"; };
 		F72E28802901F406001F4527 /* HostingServiceCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingServiceCTA.swift; sourceTree = "<group>"; };
+		F72E288229094777001F4527 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
+		F72E288429094F7D001F4527 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePhotoView.swift; sourceTree = "<group>"; };
 		F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
 		F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				F758D35928A6A4CE00027D5F /* ButtonExtension.swift */,
 				F758D35E28A6B04B00027D5F /* ColorExtension.swift */,
 				F72E28792900B863001F4527 /* CombineExtension.swift */,
+				F72E288429094F7D001F4527 /* TextExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				F72CC04728A5C0040073D4D2 /* RemoteImageView.swift */,
 				F758D35728A69BF700027D5F /* CTAButtonView.swift */,
 				F72E28802901F406001F4527 /* HostingServiceCTA.swift */,
+				F72E288229094777001F4527 /* RoundedCornerButton.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				F758D35D28A6AF4000027D5F /* SwiftUIDebugUtils.swift in Sources */,
 				F7821BA828F327BF006AF988 /* HostingServiceScopesListView.swift in Sources */,
 				F72E28812901F406001F4527 /* HostingServiceCTA.swift in Sources */,
+				F72E288329094777001F4527 /* RoundedCornerButton.swift in Sources */,
 				F72E287828FF204B001F4527 /* Flow.swift in Sources */,
 				F72E287A2900B863001F4527 /* CombineExtension.swift in Sources */,
 				F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */,
@@ -395,6 +402,7 @@
 				F758D35828A69BF700027D5F /* CTAButtonView.swift in Sources */,
 				F7821BA628F32152006AF988 /* HostingServiceAuthFlow.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				F72E288529094F7D001F4527 /* TextExtensions.swift in Sources */,
 				F72CC04828A5C0040073D4D2 /* RemoteImageView.swift in Sources */,
 				F758D35A28A6A4CE00027D5F /* ButtonExtension.swift in Sources */,
 				F758D35128A69A9800027D5F /* ImageExtension.swift in Sources */,

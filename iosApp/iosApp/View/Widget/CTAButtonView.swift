@@ -23,14 +23,9 @@ struct CTAButtonView: View {
     var body: some View {
         HStack {
             Text(self.descriptionText)
-            Button(action: {
+            RoundedCornerButton(title: self.buttonText) {
                 self.onCtaPressed()
-            }) {
-                Text(self.buttonText)
-                    .foregroundColor(.white)
             }
-            .roundCorners()
-            .setBackgroundColor(.accentColor)
         }
     }
 }

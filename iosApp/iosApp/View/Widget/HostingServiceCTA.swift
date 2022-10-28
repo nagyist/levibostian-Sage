@@ -12,8 +12,9 @@ import shared
 
 /**
  Duties of View:
- 1. Dynamically changes based on call to actions in the app for using a cloud hosting service.
- 2. 
+ 1. Dynamically shows/hides itself based on call to actions in the app for using a cloud hosting service.
+ 2. View's Call to Action changes based on what screen you're viewing. This makes context better for end user. Let's say you need
+    to update scope for Dropbox to share a photo. The Call to Action to add this scope could be, "You cannot share this photo without updating your Dropbox login settings".
  */
 struct HostingServiceCTA: View {
     struct CTADetails {
@@ -24,18 +25,15 @@ struct HostingServiceCTA: View {
     let ctaDetails: CTADetails
     
     @Binding var syncStatus: FilesRepositorySyncResult
-    @EnvironmentObject var authFlowResult: HostingServiceAuthFlow.Result
+    @State var showAuthFlowModal = false
     
     var body: some View {
         if (syncStatus.unauthorized) {
-            NavigationLink(
-                destination:
-                    HostingServiceAuthFlow(scopesToAskFor: [HostingServicePermissionScope.readFiles])
-                    .environmentObject(authFlowResult),
-                isActive: $authFlowResult.isDoneWithAuthFlow) {
-                    CTAButtonView(buttonText: self.ctaDetails.unauthorizedButtonText, descriptionText: self.ctaDetails.unauthorizedDescription) {
-                        authFlowResult.isDoneWithAuthFlow = true
-                }
+            CTAButtonView(buttonText: self.ctaDetails.unauthorizedButtonText, descriptionText: self.ctaDetails.unauthorizedDescription) {
+                showAuthFlowModal = true
+            }
+            .sheet(isPresented: $showAuthFlowModal) {
+                HostingServiceAuthFlow().accentColor(Color("AccentColor"))
             }
         }
     }

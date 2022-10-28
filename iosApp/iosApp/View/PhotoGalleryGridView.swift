@@ -19,7 +19,6 @@ struct PhotoGalleryGridView: View {
     @State var gridColumns = [GridItem(), GridItem(), GridItem()]
     private let gridItemSpacing: Double = 10
     @State private var isShowingHostingServiceAuthFlow = false
-    @StateObject private var authFlowResult = HostingServiceAuthFlow.Result()
     
     var body: some View {
         GeometryReader { geoReader in
@@ -47,7 +46,6 @@ struct PhotoGalleryGridView: View {
                         ctaDetails: HostingServiceCTA.CTADetails(unauthorizedButtonText: "login!", unauthorizedDescription: "ooops you need to login"),
                         syncStatus: $newViewModel.syncStatus
                     )
-                        .environmentObject(authFlowResult)
                 }
             }
         }
