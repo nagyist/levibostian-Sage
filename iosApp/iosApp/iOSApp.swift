@@ -11,6 +11,10 @@ struct iOSApp: App {
                 .onOpenURL { url in
                     let handledByDropbox = DiGraph.shared.iosHostingService.handleUrlOpened(url: url)
                     
+                    if handledByDropbox {
+                        NotificationCenter.default.post(.cloudLoginStatusUpdate)
+                    }
+                    
                     if !handledByDropbox {
                         // we handle it ourselves.
                     }

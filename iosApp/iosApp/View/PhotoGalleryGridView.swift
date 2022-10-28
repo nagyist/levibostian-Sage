@@ -64,6 +64,12 @@ extension PhotoGalleryGridView {
             self.filesViewModel = filesViewModel
             
             startObservingSyncState()
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.loginStatusUpdate(notification:)), notification: .cloudLoginStatusUpdate)
+        }
+        
+        deinit {
+            NotificationCenter.default.removeObserver(self)
         }
         
         private func startObservingSyncState() {
@@ -76,6 +82,10 @@ extension PhotoGalleryGridView {
         // called from UI when it's ready
         func sync() {
             filesViewModel.startSync()
+        }
+        
+        @objc func loginStatusUpdate(notification: NSNotification) {
+            sync()
         }
     }
 }

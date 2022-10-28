@@ -23,6 +23,7 @@
 		F72E28812901F406001F4527 /* HostingServiceCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E28802901F406001F4527 /* HostingServiceCTA.swift */; };
 		F72E288329094777001F4527 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E288229094777001F4527 /* RoundedCornerButton.swift */; };
 		F72E288529094F7D001F4527 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E288429094F7D001F4527 /* TextExtensions.swift */; };
+		F72E2887290BF365001F4527 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E2886290BF365001F4527 /* NotificationCenter.swift */; };
 		F7558CB628B041F600A86BF3 /* SinglePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */; };
 		F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */; };
 		F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */; };
@@ -61,6 +62,7 @@
 		F72E28802901F406001F4527 /* HostingServiceCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingServiceCTA.swift; sourceTree = "<group>"; };
 		F72E288229094777001F4527 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		F72E288429094F7D001F4527 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
+		F72E2886290BF365001F4527 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		F7558CB528B041F600A86BF3 /* SinglePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePhotoView.swift; sourceTree = "<group>"; };
 		F7558CB728B1428A00A86BF3 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
 		F7558CB928B18CB300A86BF3 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				F758D35C28A6AF4000027D5F /* SwiftUIDebugUtils.swift */,
+				F72E2886290BF365001F4527 /* NotificationCenter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				F72E287A2900B863001F4527 /* CombineExtension.swift in Sources */,
 				F758D35F28A6B04B00027D5F /* ColorExtension.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F72E2887290BF365001F4527 /* NotificationCenter.swift in Sources */,
 				F72CC03D28A198130073D4D2 /* PhotoGalleryGridView.swift in Sources */,
 				F7558CB828B1428A00A86BF3 /* PhotoImageView.swift in Sources */,
 				F7558CBA28B18CB300A86BF3 /* ShareSheetView.swift in Sources */,
